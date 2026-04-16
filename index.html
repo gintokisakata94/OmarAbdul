@@ -100,15 +100,15 @@ h2 {
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.06);
   border-left: 4px solid #1e3a8a;
+  transition: 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInItem 0.6s ease forwards;
+  animation: fadeInItem 0.6s forwards;
 }
 
 .item:hover {
   transform: translateY(-5px) scale(1.01);
   border-left: 4px solid #f59e0b;
-  transition: 0.3s ease;
 }
 
 .title {
@@ -158,19 +158,13 @@ footer {
     transform: translateY(0);
   }
 }
-
-/* stagger */
-.item:nth-child(1) { animation-delay: 0.1s; }
-.item:nth-child(2) { animation-delay: 0.2s; }
-.item:nth-child(3) { animation-delay: 0.3s; }
-
 </style>
 </head>
 
 <body>
 
 <header>
-  <img src="https://via.placeholder.com/120">
+  <img src="https://via.placeholder.com/120" alt="profile">
   <h1>Omar Abdul</h1>
   <div class="subtitle">
     Engineering Student — Arts et Métiers Institute of Technology
@@ -187,14 +181,13 @@ footer {
 
 <section id="about">
 <h2>About</h2>
-
 <p>
 I am an engineering student based in Châlons-en-Champagne at Arts et Métiers Institute of Technology.
 My academic interests focus on physics, mechanics, and applied engineering systems.
 </p>
 
 <p>
-Through my studies and experiences, I have developed discipline, adaptability, and a strong ability to work under pressure.
+Through my studies and experiences, I have developed discipline, adaptability, and the ability to work under pressure.
 </p>
 </section>
 
@@ -213,7 +206,7 @@ Through my studies and experiences, I have developed discipline, adaptability, a
 
 <div class="item">
 <div class="title">Private Tutor</div>
-<div class="small">Teaching, clarity, responsibility</div>
+<div class="small">Teaching, responsibility, clarity</div>
 </div>
 </section>
 
@@ -222,16 +215,12 @@ Through my studies and experiences, I have developed discipline, adaptability, a
 
 <div class="item">
 <div class="title">Heat Sink Optimization (TIPE)</div>
-<div class="small">
-Study of thermal dissipation in electronic systems using modeling, simulation and experiments.
-</div>
+<div class="small">Thermal simulation and experimental validation of electronic cooling systems.</div>
 </div>
 
 <div class="item">
 <div class="title">Mechanical Systems & Randomness</div>
-<div class="small">
-Analysis of deterministic systems that appear random due to physical complexity.
-</div>
+<div class="small">Study of deterministic systems that appear random due to physical complexity.</div>
 </div>
 </section>
 
@@ -239,7 +228,7 @@ Analysis of deterministic systems that appear random due to physical complexity.
 <h2>Activities & Interests</h2>
 
 <p>
-Student associations, teamwork projects, intercultural exchange, gym, reading in English, continuous self-improvement.
+Student associations, teamwork projects, intercultural exchange, gym, reading in English, continuous improvement.
 </p>
 </section>
 
