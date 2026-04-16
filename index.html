@@ -3,232 +3,1156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Omar Abdul | Portfolio</title>
+<title>Omar Abdul — Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <style>
-
-/* BASE */
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(180deg, #ffffff, #f1f5f9);
-  color: #1e293b;
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface2: #1a1a24;
+  --accent: #4f8fff;
+  --accent2: #a78bfa;
+  --text: #e8eaf0;
+  --muted: #6b7280;
+  --border: rgba(255,255,255,0.07);
+  --glow: rgba(79,143,255,0.15);
 }
 
-/* HERO */
-.hero {
-  height: 100vh;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(10,10,15,0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  animation: fadeDown 0.8s ease both;
+}
+
+nav .logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav .logo span { color: var(--accent); }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 36px;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+nav ul a:hover { color: var(--text); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at top, #dbeafe, #ffffff);
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 60px;
-  color: #1e3a8a;
-}
-
-.hero p {
-  color: #64748b;
-}
-
-/* SECTIONS */
-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 100px 20px;
-}
-
-h2 {
-  color: #1e3a8a;
-  margin-bottom: 40px;
-}
-
-/* PROJECT CARDS */
-.project {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 50px;
-  background: white;
-  border-radius: 20px;
+  padding: 0 60px;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.project img {
-  width: 300px;
-  object-fit: cover;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(79,143,255,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(167,139,250,0.06) 0%, transparent 60%);
 }
 
-.project-content {
-  padding: 25px;
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 70% 50%, black 20%, transparent 70%);
 }
 
-.project-content h3 {
-  margin-top: 0;
+.hero-inner {
+  position: relative;
+  max-width: 900px;
 }
 
-/* BUTTON */
-.btn {
+.hero-tag {
   display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #2563eb;
-  color: white;
-  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(79,143,255,0.3);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.hero-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(56px, 8vw, 100px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.35s ease both;
+}
+
+.hero-name .line2 {
+  display: block;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+  color: transparent;
+}
+
+.hero-desc {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 520px;
+  font-weight: 300;
+  margin-bottom: 48px;
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+
+.hero-desc strong { color: var(--text); font-weight: 500; }
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.65s ease both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 15px;
   text-decoration: none;
-  transition: 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 30px rgba(79,143,255,0.3);
 }
 
-.btn:hover {
-  background: #1d4ed8;
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(79,143,255,0.5);
 }
 
-/* EXPERIENCE */
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.04);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: fadeUp 0.8s 1s ease both;
+}
+
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: var(--muted);
+  animation: scrollLine 2s 1.5s ease-in-out infinite;
+}
+
+/* ── SECTION WRAPPER ── */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 40px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin-bottom: 64px;
+  color: var(--text);
+}
+
+/* ── ABOUT ── */
+#about {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-text p {
+  color: var(--muted);
   margin-bottom: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  font-size: 16px;
+  line-height: 1.8;
 }
 
-/* CONTACT */
-.contact {
+.about-text p strong { color: var(--text); font-weight: 500; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.stat-card:hover {
+  border-color: rgba(79,143,255,0.3);
+  transform: translateY(-2px);
+}
+
+.stat-card .num {
+  font-family: 'Syne', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-card .label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ── EDUCATION ── */
+.edu-item {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.edu-item.visible { opacity: 1; transform: translateY(0); }
+
+.edu-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.edu-content h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.edu-content .date {
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+.edu-content p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── PROJECTS ── */
+#projects { background: var(--surface); border-top: 1px solid var(--border); }
+
+.project-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  transition: border-color 0.3s, transform 0.3s;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.project-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  border-color: rgba(79,143,255,0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(79,143,255,0.1);
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 32px;
+  cursor: pointer;
+  gap: 20px;
+}
+
+.project-header-left { display: flex; align-items: center; gap: 20px; }
+
+.project-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.icon-blue { background: rgba(79,143,255,0.15); }
+.icon-purple { background: rgba(167,139,250,0.15); }
+.icon-green { background: rgba(52,211,153,0.15); }
+.icon-orange { background: rgba(251,146,60,0.15); }
+
+.project-meta h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.project-meta .period {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.project-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.project-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.project-toggle.open { transform: rotate(45deg); border-color: var(--accent); color: var(--accent); }
+
+.project-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-body.open { max-height: 600px; }
+
+.project-body-inner {
+  padding: 0 32px 28px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.project-body-inner ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.project-body-inner ul li {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.project-body-inner ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(79,143,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(79,143,255,0.2);
+  letter-spacing: 0.03em;
+}
+
+.tag.purple { background: rgba(167,139,250,0.1); color: var(--accent2); border-color: rgba(167,139,250,0.2); }
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid rgba(79,143,255,0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.project-link:hover {
+  background: rgba(79,143,255,0.1);
+  box-shadow: 0 0 20px rgba(79,143,255,0.2);
+}
+
+/* ── EXPERIENCE ── */
+.exp-timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.exp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.exp-item {
+  position: relative;
+  margin-bottom: 44px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.exp-item.visible { opacity: 1; transform: translateX(0); }
+
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.exp-item h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.exp-item .date {
+  font-size: 12px;
+  color: var(--accent);
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.exp-item p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── SKILLS ── */
+#skills { background: var(--surface); border-top: 1px solid var(--border); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skill-group {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  transition: border-color 0.2s, transform 0.2s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.skill-group.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, transform 0.2s;
+}
+
+.skill-group:hover {
+  border-color: rgba(79,143,255,0.3);
+  transform: translateY(-3px);
+}
+
+.skill-group-icon { font-size: 28px; margin-bottom: 14px; }
+
+.skill-group h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+.skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.pill {
+  font-size: 13px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* ── INTERESTS ── */
+.interests-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.interest-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: var(--muted);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.interest-badge:hover { border-color: var(--accent); color: var(--text); }
+.interest-badge span { font-size: 18px; }
+
+/* ── CONTACT ── */
+#contact {
   text-align: center;
-  background: #2563eb;
+  padding: 160px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 80% at 50% 100%, rgba(79,143,255,0.08), transparent 60%);
+}
+
+.contact-inner { position: relative; }
+
+.contact-sup {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.contact-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.contact-sub {
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 48px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.contact-link.email {
+  background: var(--accent);
   color: white;
-  padding: 60px;
-  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(79,143,255,0.3);
 }
 
-/* RESPONSIVE */
-@media(max-width:800px){
-  .project {
-    flex-direction: column;
-  }
-
-  .project img {
-    width: 100%;
-  }
+.contact-link.email:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(79,143,255,0.5);
 }
 
+.contact-link.linkedin {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.contact-link.linkedin:hover {
+  border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.06);
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollLine {
+  0%, 100% { width: 40px; opacity: 1; }
+  50% { width: 60px; opacity: 0.4; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  nav ul { display: none; }
+  #hero { padding: 0 24px; }
+  .hero-scroll { left: 24px; }
+  .section { padding: 80px 24px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .project-header { flex-wrap: wrap; }
+  #contact { padding: 100px 24px; }
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="logo">Omar<span>.</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
 <!-- HERO -->
-<header class="hero">
-  <h1>Omar Abdul</h1>
-  <p>Engineering student — discipline, consistency, and analytical thinking</p>
-</header>
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Available for internship — from June 22, 2026</div>
+    <h1 class="hero-name">
+      Omar Abdul<span class="line2">Engineer</span>
+    </h1>
+    <p class="hero-desc">
+      Arts et Métiers engineering student passionate about <strong>mechanical systems</strong>, <strong>thermal simulation</strong>, and <strong>data-driven engineering</strong>. Driven by discipline, precision, and analytical thinking.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll down
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section">
+    <div class="section-label">About me</div>
+    <div class="section-title">Who I am</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm <strong>Omar Abdul</strong>, an engineering student at Arts et Métiers (ENSAM), one of France's top engineering schools. I joined after completing two years of intensive <em>Classes Préparatoires</em> (PT track), a rigorous preparatory program in engineering sciences, mathematics, and physics.</p>
+        <p>My approach to engineering is grounded in <strong>rigor, consistency, and a genuine curiosity</strong> for how things work — from mechanical systems to statistical modeling and thermal simulations.</p>
+        <p>Beyond engineering, I'm committed to sharing knowledge: I've been tutoring students in mathematics and physics since 2022, adapting my explanations to each learner.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="num">4+</div>
+          <div class="label">Engineering projects completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">3</div>
+          <div class="label">Programming languages mastered</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">2+</div>
+          <div class="label">Years of private tutoring</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">ENSAM</div>
+          <div class="label">Top French engineering school</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section">
+    <div class="section-label">Academic background</div>
+    <div class="section-title">Education</div>
+
+    <div class="edu-item">
+      <div class="edu-dot"></div>
+      <div class="edu-content">
+        <h3>École Nationale Supérieure des Arts et Métiers (ENSAM)</h3>
+        <div class="date">September 2025 – June 2028</div>
+        <p>Engineering degree in mechanical, materials, design, and project management. One of France's grandes écoles in engineering, recognized internationally for excellence in applied sciences.</p>
+      </div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-dot"></div>
+      <div class="edu-content">
+        <h3>Lycée Raspail — Classes Préparatoires PT / PT*</h3>
+        <div class="date">September 2022 – June 2025</div>
+        <p>Highly competitive two-year preparatory program for France's top engineering schools. Coursework in engineering sciences, advanced mathematics, physics, and computer science. Equivalent to a double major in mathematics and physics at bachelor level.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PROJECTS -->
-<section>
-<h2>Projects</h2>
+<section id="projects">
+  <div class="section">
+    <div class="section-label">Selected work</div>
+    <div class="section-title">Projects</div>
 
-<!-- FAB PROJECT -->
-<div class="project">
-  <img src="https://images.unsplash.com/photo-1581091870622-3c8eaa0f0b6f">
-  <div class="project-content">
-    <h3>Tensile Testing of Rope Splices</h3>
-    <p>
-    Conducted tensile tests to determine breaking limits of rope splices.
-    Designed and machined precise gripping systems to ensure reliable measurements.
-    Coordinated experimental work with external partners.
-    </p>
+    <!-- PROJECT 1 -->
+    <div class="project-card">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-header-left">
+          <div class="project-icon icon-blue">🔩</div>
+          <div class="project-meta">
+            <h3>Tensile Testing of Rope Splices</h3>
+            <div class="period">September 2025 – January 2026 · ENSAM</div>
+          </div>
+        </div>
+        <button class="project-toggle">+</button>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-tags">
+            <span class="tag">Mechanical Testing</span>
+            <span class="tag">Machining</span>
+            <span class="tag">SolidWorks</span>
+            <span class="tag purple">Experimental</span>
+          </div>
+          <ul>
+            <li>Conducted tensile tests on rope splices to determine their breaking load under controlled conditions.</li>
+            <li>Designed and precisely machined custom gripping jaws to ensure reliable sample mounting and accurate force measurements.</li>
+            <li>Coordinated with an external partner and maintained a rigorous experimental protocol throughout the testing campaign.</li>
+            <li>Analyzed results to draw conclusions about splice geometry and its influence on mechanical resistance.</li>
+          </ul>
+          <!-- Replace TON_PDF.pdf with your actual file path -->
+          <a href="TON_PDF.pdf" class="project-link" target="_blank">📄 View Report (PDF)</a>
+        </div>
+      </div>
+    </div>
 
-    <!-- MET TON PDF ICI -->
-    <a href="TON_PDF.pdf" class="btn" target="_blank">View Project</a>
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-header-left">
+          <div class="project-icon icon-orange">🌡️</div>
+          <div class="project-meta">
+            <h3>Thermal Optimization of Electronic Components</h3>
+            <div class="period">September 2024 – July 2025 · CPGE</div>
+          </div>
+        </div>
+        <button class="project-toggle">+</button>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-tags">
+            <span class="tag">Thermal Simulation</span>
+            <span class="tag">Python</span>
+            <span class="tag">Heat Transfer</span>
+            <span class="tag purple">Data Analysis</span>
+          </div>
+          <ul>
+            <li>Simulated the thermal behavior of an LED mounted on a heatsink, modeling conduction, convection, and radiation simultaneously.</li>
+            <li>Developed Python scripts for data extraction, post-processing, and automated visualization of temperature fields.</li>
+            <li>Compared simulation outputs with analytical models to validate numerical accuracy.</li>
+            <li>Proposed design modifications to improve thermal dissipation performance.</li>
+          </ul>
+          <a href="#" class="project-link">📊 View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-header-left">
+          <div class="project-icon icon-purple">🎲</div>
+          <div class="project-meta">
+            <h3>Statistical Analysis of a Mechanical Slot Machine</h3>
+            <div class="period">September 2023 – July 2024 · CPGE</div>
+          </div>
+        </div>
+        <button class="project-toggle">+</button>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-tags">
+            <span class="tag">Statistics</span>
+            <span class="tag">Python</span>
+            <span class="tag">Probability</span>
+            <span class="tag purple">Simulation</span>
+          </div>
+          <ul>
+            <li>Physically modified a mechanical wheel by adding a weight to study how imbalance affects outcome distribution.</li>
+            <li>Conducted repeated experiments and performed frequency analysis to assess the system's equiprobability.</li>
+            <li>Built a Python simulation to estimate the resulting probability distribution and compare it with experimental measurements.</li>
+            <li>Demonstrated how a deterministic mechanical system can exhibit pseudo-random behavior under specific conditions.</li>
+          </ul>
+          <!-- Replace TON_DIAPO.pdf with your actual file path -->
+          <a href="TON_DIAPO.pdf" class="project-link" target="_blank">📑 View Slides (PDF)</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="project-card">
+      <div class="project-header" onclick="toggleProject(this)">
+        <div class="project-header-left">
+          <div class="project-icon icon-green">🤖</div>
+          <div class="project-meta">
+            <h3>Yes We Code — Academic Award Winner</h3>
+            <div class="period">January 2021 – April 2021</div>
+          </div>
+        </div>
+        <button class="project-toggle">+</button>
+      </div>
+      <div class="project-body">
+        <div class="project-body-inner">
+          <div class="project-tags">
+            <span class="tag">SolidWorks</span>
+            <span class="tag">Python</span>
+            <span class="tag">Autonomous Vehicles</span>
+            <span class="tag purple">Teamwork</span>
+          </div>
+          <ul>
+            <li>Designed and programmed autonomous vehicles in a team setting, following a technical specification document.</li>
+            <li>Used SolidWorks for 3D modeling of the vehicle chassis and Python for autonomous navigation logic.</li>
+            <li>Won an academic award for the quality and innovation of the final project delivery.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
-
-<!-- THERMAL PROJECT -->
-<div class="project">
-  <img src="https://images.unsplash.com/photo-1581092919534-3e6c0f3b42c3">
-  <div class="project-content">
-    <h3>Thermal Optimization of Components</h3>
-    <p>
-    Simulated heat transfer in electronic systems using conduction and convection models.
-    Developed Python scripts to analyze and visualize thermal data.
-    </p>
-
-    <a href="#" class="btn">View Details</a>
-  </div>
-</div>
-
-<!-- RANDOMNESS PROJECT -->
-<div class="project">
-  <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc">
-  <div class="project-content">
-    <h3>Mechanical Randomness Analysis</h3>
-    <p>
-    Studied how deterministic systems can create randomness.
-    Modified a mechanical wheel and performed statistical analysis of outcomes.
-    Built Python simulations to compare theoretical and experimental results.
-    </p>
-
-    <!-- MET TON DIAPO ICI -->
-    <a href="TON_DIAPO.pdf" class="btn" target="_blank">View Project</a>
-  </div>
-</div>
-
 </section>
 
 <!-- EXPERIENCE -->
-<section>
-<h2>Professional Experience</h2>
+<section id="experience">
+  <div class="section">
+    <div class="section-label">Professional background</div>
+    <div class="section-title">Experience</div>
+    <div class="exp-timeline">
 
-<div class="card">
-<strong>Private Tutor (2022 – Present)</strong><br>
-Personalized support, pedagogy, and student progress monitoring.
-</div>
+      <div class="exp-item">
+        <h3>Private Tutor in Mathematics & Physics</h3>
+        <div class="date">June 2022 – Present</div>
+        <p>Personalized one-on-one academic coaching, adapting explanations to each student's pace and learning style. Helped students improve their results and build long-term understanding of complex concepts.</p>
+      </div>
 
-<div class="card">
-<strong>Construction Worker (2024)</strong><br>
-Teamwork, logistics, and on-site organization.
-</div>
+      <div class="exp-item">
+        <h3>General Contractor (Construction Site)</h3>
+        <div class="date">July – August 2024</div>
+        <p>Supported on-site teams in preparation and logistics. Managed material handling, participated in manual tasks, and contributed to operational coordination on an active construction site.</p>
+      </div>
 
-<div class="card">
-<strong>Restaurant Employee (2023)</strong><br>
-Customer service, multitasking, and teamwork.
-</div>
+      <div class="exp-item">
+        <h3>Restaurant Staff</h3>
+        <div class="date">July – August 2023</div>
+        <p>Took orders and served customers, ensuring a high-quality dining experience. Coordinated with kitchen staff and managed multiple tables simultaneously in a fast-paced environment.</p>
+      </div>
 
-<div class="card">
-<strong>Sales Assistant (2019)</strong><br>
-Customer interaction and product management.
-</div>
+      <div class="exp-item">
+        <h3>Sales Assistant</h3>
+        <div class="date">March 2019</div>
+        <p>Welcomed and advised customers, managed sales and cash register operations, handled product stocking and visual merchandising to optimize the customer experience.</p>
+      </div>
 
+    </div>
+  </div>
 </section>
 
 <!-- SKILLS -->
-<section>
-<h2>Skills</h2>
+<section id="skills">
+  <div class="section">
+    <div class="section-label">Technical proficiency</div>
+    <div class="section-title">Skills & Interests</div>
+    <div class="skills-grid">
 
-<div class="card">
-<strong>Engineering:</strong> SolidWorks, FreeCAD
-</div>
+      <div class="skill-group">
+        <div class="skill-group-icon">⚙️</div>
+        <h3>Engineering Tools</h3>
+        <div class="skill-pills">
+          <span class="pill">SolidWorks</span>
+          <span class="pill">FreeCAD</span>
+          <span class="pill">CAD / CAM</span>
+        </div>
+      </div>
 
-<div class="card">
-<strong>Programming:</strong> Python, SQL, MATLAB, Scilab
-</div>
+      <div class="skill-group">
+        <div class="skill-group-icon">💻</div>
+        <h3>Programming</h3>
+        <div class="skill-pills">
+          <span class="pill">Python</span>
+          <span class="pill">MATLAB</span>
+          <span class="pill">Scilab</span>
+          <span class="pill">SQL</span>
+        </div>
+      </div>
 
-<div class="card">
-<strong>Languages:</strong> English (B1), Spanish (A2)
-</div>
+      <div class="skill-group">
+        <div class="skill-group-icon">🌍</div>
+        <h3>Languages</h3>
+        <div class="skill-pills">
+          <span class="pill">French — Native</span>
+          <span class="pill">English — B1</span>
+          <span class="pill">Spanish — A2</span>
+        </div>
+      </div>
 
+    </div>
+
+    <div class="interests-row">
+      <div class="interest-badge"><span>🏸</span> Badminton</div>
+      <div class="interest-badge"><span>🏀</span> Basketball</div>
+      <div class="interest-badge"><span>📐</span> Mathematics tutoring (volunteer)</div>
+      <div class="interest-badge"><span>🔭</span> Physics tutoring (volunteer)</div>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact">
-<h2>Contact</h2>
-<p>omar.abdul@ensam.eu</p>
-<p>linkedin.com/in/omarabdul94</p>
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-sup">Let's connect</div>
+    <h2 class="contact-title">Looking for an internship<br>starting June 2026</h2>
+    <p class="contact-sub">1-month internship — open to any field related to mechanical engineering, simulation, or data analysis.</p>
+    <div class="contact-links">
+      <a href="mailto:abdulomar94@outlook.fr" class="contact-link email">
+        ✉️ abdulomar94@outlook.fr
+      </a>
+      <a href="https://linkedin.com/in/omarabdul94" class="contact-link linkedin" target="_blank">
+        🔗 LinkedIn
+      </a>
+    </div>
+  </div>
 </section>
+
+<footer>
+  © 2026 Omar Abdul — Built for American university applications
+</footer>
+
+<script>
+// TOGGLE PROJECTS
+function toggleProject(header) {
+  const card = header.closest('.project-card');
+  const body = card.querySelector('.project-body');
+  const btn = header.querySelector('.project-toggle');
+  const isOpen = body.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.project-body.open').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.project-toggle.open').forEach(b => b.classList.remove('open'));
+  if (!isOpen) {
+    body.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+
+// INTERSECTION OBSERVER for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.edu-item, .exp-item, .skill-group, .project-card').forEach(el => observer.observe(el));
+
+// ACTIVE NAV LINK
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav ul a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+  });
+});
+</script>
 
 </body>
 </html>
