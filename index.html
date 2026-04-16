@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Omar Abdul | Portfolio</title>
+<title>Omar | Portfolio</title>
 
 <style>
 html { scroll-behavior: smooth; }
@@ -26,17 +26,12 @@ nav {
   gap: 25px;
   padding: 14px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  z-index: 1000;
 }
 
 nav a {
   text-decoration: none;
   color: #1f3c88;
   font-weight: bold;
-}
-
-nav a:hover {
-  color: #0ea5e9;
 }
 
 /* HERO */
@@ -49,7 +44,6 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
 }
 
 header img {
@@ -57,72 +51,68 @@ header img {
   height: 140px;
   border-radius: 50%;
   border: 3px solid white;
-  margin-bottom: 20px;
-}
-
-header h1 {
-  font-size: 42px;
-  margin: 10px 0;
 }
 
 /* SECTIONS */
 section {
-  max-width: 950px;
+  max-width: 900px;
   margin: auto;
   padding: 80px 20px;
 }
 
 h2 {
   color: #1f3c88;
-  margin-bottom: 20px;
 }
 
 /* CARD */
 .card {
   background: white;
-  padding: 18px;
   border-radius: 12px;
+  padding: 18px;
   margin: 12px 0;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* ASIDES */
-.aside {
-  background: #eef2ff;
-  border-left: 4px solid #1f3c88;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 8px;
-}
-
-/* BUTTON */
-button {
+/* ACCORDION BUTTON */
+.accordion {
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
   background: #1f3c88;
   color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 8px;
+  border-radius: 10px;
+  margin-top: 10px;
+  transition: 0.3s;
 }
 
-button:hover {
+.accordion:hover {
   background: #0ea5e9;
 }
 
-/* HIDDEN CONTENT */
-.more {
-  display: none;
-  margin-top: 10px;
-  color: #374151;
+/* PANEL (hidden content) */
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background: #eef2ff;
+  border-radius: 10px;
+  padding: 0 15px;
+  margin-top: 5px;
 }
 
-/* LINKS */
+.panel p {
+  padding: 15px 0;
+}
+
+/* CONTACT */
 a {
   color: #0ea5e9;
-  text-decoration: none;
 }
 
+/* FOOTER */
 footer {
   text-align: center;
   padding: 30px;
@@ -136,9 +126,8 @@ footer {
 
 <nav>
   <a href="#about">About</a>
-  <a href="#experiences">Experiences</a>
-  <a href="#projects">Projects</a>
-  <a href="#extra">Activities</a>
+  <a href="#exp">Experience</a>
+  <a href="#proj">Projects</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -148,130 +137,98 @@ footer {
   <p>Engineering Student | Arts et Métiers Institute of Technology</p>
 </header>
 
-<!-- ABOUT -->
 <section id="about">
+<h2>Who am I?</h2>
 
-  <div class="aside">
-    👋 Welcome to my portfolio! You will find my projects, experiences and interests.
-  </div>
+<div class="card">
+My name is Omar and I am currently studying in Châlons-en-Champagne at Arts et Métiers Institute of Technology.
 
-  <div class="aside">
-    💬 I am an engineering student passionate about physics, mechanics and applied sciences.
-    I enjoy understanding systems and turning theory into real applications.
-  </div>
+<button class="accordion">More about me</button>
+<div class="panel">
+<p>
+I am motivated, disciplined and curious. I enjoy understanding technical systems and solving engineering problems.
+</p>
+</div>
 
-  <h2>WHO AM I?</h2>
-
-  <div class="card">
-    My name is Omar and I am currently studying in Châlons-en-Champagne at Arts et Métiers Institute of Technology.
-
-    <br><br>
-
-    <button onclick="toggle('aboutMore')">View more</button>
-
-    <div class="more" id="aboutMore">
-      I am motivated, disciplined and curious. I enjoy working on technical problems and learning from real-world situations.
-    </div>
-  </div>
-
+</div>
 </section>
 
-<!-- EXPERIENCES -->
-<section id="experiences">
-
-<h2>PROFESSIONAL EXPERIENCES</h2>
+<section id="exp">
+<h2>Professional Experiences</h2>
 
 <div class="card">
 Retail Sales Assistant
 
-<button onclick="toggle('exp1')">Details</button>
-<div class="more" id="exp1">
-Developed communication skills, customer interaction and adaptability in fast-paced environments.
-</div>
+<button class="accordion">Details</button>
+<div class="panel"><p>Communication, customer interaction, adaptability in real environments.</p></div>
 </div>
 
 <div class="card">
 Construction Worker
 
-<button onclick="toggle('exp2')">Details</button>
-<div class="more" id="exp2">
-Learned discipline, teamwork, endurance and precision in demanding physical conditions.
-</div>
+<button class="accordion">Details</button>
+<div class="panel"><p>Discipline, teamwork, endurance and physical resilience.</p></div>
 </div>
 
 <div class="card">
 Private Tutor
 
-<button onclick="toggle('exp3')">Details</button>
-<div class="more" id="exp3">
-Improved teaching skills, patience and ability to explain complex concepts clearly.
-</div>
+<button class="accordion">Details</button>
+<div class="panel"><p>Teaching skills, clarity, patience and responsibility.</p></div>
 </div>
 
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-
-<h2>ACADEMIC & RESEARCH PROJECTS</h2>
+<section id="proj">
+<h2>Projects</h2>
 
 <div class="card">
 TIPE — Heat Sink Optimization
 
-<button onclick="toggle('proj1')">View details</button>
-<div class="more" id="proj1">
-Study of thermal dissipation in electronic components using simulations and experimental validation.
+<button class="accordion">View details</button>
+<div class="panel">
+<p>Study of thermal dissipation in electronic components using simulation and experiments.</p>
 </div>
 </div>
 
 <div class="card">
-Mechanical System — Illusion of Randomness
+Mechanical System — Randomness Illusion
 
-<button onclick="toggle('proj2')">View details</button>
-<div class="more" id="proj2">
-Analysis of deterministic physical systems that appear random due to complexity and sensitivity to initial conditions.
+<button class="accordion">View details</button>
+<div class="panel">
+<p>Analysis of deterministic systems that appear random due to physical complexity.</p>
 </div>
 </div>
 
 </section>
 
-<!-- EXTRA -->
-<section id="extra">
-
-<h2>EXTRACURRICULAR INVOLVEMENT</h2>
-
-<div class="card">
-Participation in group work, openness to multicultural environments, and interest in student associations.
-
-<button onclick="toggle('extra1')">More</button>
-<div class="more" id="extra1">
-I enjoy collaborating with others and contributing to team-based academic or social projects.
-</div>
-</div>
-
-</section>
-
-<!-- CONTACT -->
 <section id="contact">
-
-<h2>CONTACT</h2>
+<h2>Contact</h2>
 
 <div class="card">
-📧 Email: <a href="mailto:omar.abdul@ensam.eu">omar.abdul@ensam.eu</a><br>
-🔗 LinkedIn: <a href="https://www.linkedin.com/in/omarabdul94/" target="_blank">Profile</a>
+Email: <a href="mailto:omar.abdul@ensam.eu">omar.abdul@ensam.eu</a><br>
+LinkedIn: <a href="https://www.linkedin.com/in/omarabdul94/" target="_blank">Profile</a>
 </div>
-
 </section>
 
 <footer>
-© 2026 Omar Abdul — Engineering Portfolio
+© 2026 Omar Abdul
 </footer>
 
 <script>
-function toggle(id) {
-  const el = document.getElementById(id);
-  el.style.display = (el.style.display === "block") ? "none" : "block";
-}
+const acc = document.querySelectorAll(".accordion");
+
+acc.forEach(btn => {
+  btn.addEventListener("click", function () {
+    const panel = this.nextElementSibling;
+
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+});
 </script>
 
 </body>
