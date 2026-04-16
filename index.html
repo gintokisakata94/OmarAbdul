@@ -10,29 +10,10 @@
 /* ================= BASE ================= */
 body {
   margin: 0;
-  font-family: "Georgia", serif;
-  background: #0b1220;
-  color: #e5e7eb;
+  font-family: "Inter", "Georgia", serif;
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+  color: #1e293b;
   overflow-x: hidden;
-}
-
-/* BACKGROUND ANIM */
-body::after {
-  content: "";
-  position: fixed;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(59,130,246,0.2), transparent);
-  top: -200px;
-  right: -200px;
-  filter: blur(120px);
-  animation: moveBg 10s infinite alternate;
-  z-index: -1;
-}
-
-@keyframes moveBg {
-  from { transform: translate(0,0); }
-  to { transform: translate(-200px,200px); }
 }
 
 /* PROGRESS BAR */
@@ -42,7 +23,7 @@ body::after {
   left: 0;
   height: 4px;
   width: 0%;
-  background: linear-gradient(90deg, #fbbf24, #3b82f6);
+  background: linear-gradient(90deg, #2563eb, #f59e0b);
   z-index: 9999;
 }
 
@@ -53,24 +34,34 @@ body::after {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle at top, #1e3a8a, #0b1220);
+  background: radial-gradient(circle at top, #e0e7ff, #f8fafc);
   text-align: center;
 }
 
 .hero h1 {
   font-size: 60px;
-  color: white;
+  color: #1e3a8a;
+  letter-spacing: 1px;
 }
 
 .hero p {
-  color: #cbd5e1;
+  color: #475569;
+  font-size: 18px;
 }
 
 .cta a {
-  color: #fbbf24;
-  text-decoration: none;
   margin-top: 20px;
   display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: #1e3a8a;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.cta a:hover {
+  background: #f59e0b;
 }
 
 /* SECTIONS */
@@ -79,8 +70,8 @@ section {
   margin: auto;
   padding: 100px 20px;
   opacity: 0;
-  transform: translateY(60px);
-  transition: 0.8s;
+  transform: translateY(50px);
+  transition: 0.7s ease;
 }
 
 section.show {
@@ -88,9 +79,11 @@ section.show {
   transform: translateY(0);
 }
 
+/* TITLES */
 h2 {
-  color: #fbbf24;
+  color: #1e3a8a;
   margin-bottom: 40px;
+  font-size: 28px;
 }
 
 /* SPLIT */
@@ -104,31 +97,25 @@ h2 {
   flex-direction: row-reverse;
 }
 
-.block {
+/* CARDS */
+.block, .card {
   width: 45%;
-  background: #111827;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
   padding: 25px;
-  border-radius: 15px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   transition: 0.3s;
 }
 
-.block:hover {
-  transform: scale(1.05);
+.block:hover, .card:hover {
+  transform: translateY(-5px);
 }
 
-/* PROJECT CARDS */
+/* PROJECTS */
 .card {
-  background: #111827;
-  padding: 25px;
-  border-radius: 15px;
   cursor: pointer;
   margin-bottom: 20px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  background: #1e3a8a;
 }
 
 /* MODAL */
@@ -139,22 +126,22 @@ h2 {
   left:0;
   width:100%;
   height:100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.4);
   justify-content: center;
   align-items: center;
 }
 
 .modal-content {
-  background: #111827;
+  background: white;
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 16px;
   max-width: 500px;
 }
 
 .modal-content span {
-  cursor: pointer;
   float: right;
-  font-size: 22px;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 /* SIGNATURE */
@@ -165,7 +152,7 @@ h2 {
 }
 
 .grid div {
-  background: #111827;
+  background: white;
   padding: 20px;
   border-radius: 12px;
   text-align: center;
@@ -174,13 +161,14 @@ h2 {
 
 .grid div:hover {
   background: #1e3a8a;
-  transform: scale(1.05);
+  color: white;
 }
 
 /* CONTACT */
 .contact {
   text-align: center;
-  background: #111827;
+  background: #1e3a8a;
+  color: white;
   padding: 60px;
   border-radius: 20px;
 }
@@ -194,7 +182,8 @@ h2 {
   .split, .split.reverse {
     flex-direction: column;
   }
-  .block {
+
+  .block, .card {
     width: 100%;
     margin-bottom: 20px;
   }
@@ -210,9 +199,9 @@ h2 {
 <!-- HERO -->
 <header class="hero">
   <h1 id="typing"></h1>
-  <p>Engineering student — Physics, mechanics & systems thinking</p>
+  <p>Engineering student — disciplined, analytical, and curious</p>
   <div class="cta">
-    <a href="#projects">See my work ↓</a>
+    <a href="#projects">Explore my work</a>
   </div>
 </header>
 
@@ -221,13 +210,13 @@ h2 {
 <h2>My Journey</h2>
 
 <div class="split">
-  <div class="block">Low motivation → average performance</div>
-  <div class="block">CPGE turning point → discipline</div>
+  <div class="block">I started with low motivation and little direction.</div>
+  <div class="block">A teacher encouraged me to join CPGE.</div>
 </div>
 
 <div class="split reverse">
-  <div class="block">Structured study habits</div>
-  <div class="block">Clear academic direction</div>
+  <div class="block">I developed discipline and consistency.</div>
+  <div class="block">I defined clear academic and professional goals.</div>
 </div>
 
 </section>
@@ -246,7 +235,7 @@ h2 {
 <div class="modal-content">
 <span onclick="closeModal('p1')">&times;</span>
 <h3>Heat Sink Optimization</h3>
-<p>Thermal study using simulation + real experiment (LED 10W).</p>
+<p>Study of thermal dissipation using simulation and experimentation.</p>
 </div>
 </div>
 
@@ -254,7 +243,7 @@ h2 {
 <div class="modal-content">
 <span onclick="closeModal('p2')">&times;</span>
 <h3>Mechanical Randomness</h3>
-<p>Study of deterministic systems creating randomness illusion.</p>
+<p>Study of deterministic systems that create the illusion of randomness.</p>
 </div>
 </div>
 
@@ -279,20 +268,19 @@ h2 {
 
 <script>
 
-/* TYPING */
+/* typing */
 const text = "Omar Abdul";
 let i = 0;
-
 function type(){
   if(i < text.length){
     document.getElementById("typing").innerHTML += text.charAt(i);
     i++;
-    setTimeout(type, 80);
+    setTimeout(type, 70);
   }
 }
 type();
 
-/* SCROLL REVEAL */
+/* scroll reveal */
 const sections = document.querySelectorAll("section");
 window.addEventListener("scroll", () => {
   sections.forEach(sec => {
@@ -302,18 +290,17 @@ window.addEventListener("scroll", () => {
   });
 });
 
-/* PROGRESS BAR */
+/* progress bar */
 window.addEventListener("scroll", () => {
   const scrollTop = document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - window.innerHeight;
   document.getElementById("progressBar").style.width = (scrollTop/height)*100 + "%";
 });
 
-/* MODAL */
+/* modal */
 function openModal(id){
   document.getElementById(id).style.display = "flex";
 }
-
 function closeModal(id){
   document.getElementById(id).style.display = "none";
 }
