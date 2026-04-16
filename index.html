@@ -3,46 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Omar Abdul | Academic Portfolio</title>
+<title>Omar Abdul | Portfolio</title>
 
 <style>
-/* ================= BACKGROUND ================= */
+/* ================= BASE ================= */
 body {
   margin: 0;
   font-family: "Georgia", serif;
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
   color: #111827;
   line-height: 1.7;
   overflow-x: hidden;
-  background: linear-gradient(-45deg, #0f172a, #1e3a8a, #f8fafc, #0f172a);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
-}
-
-/* floating glow */
-body::before {
-  content: "";
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background: rgba(245,158,11,0.25);
-  filter: blur(120px);
-  top: -100px;
-  left: -100px;
-  animation: floatGlow 8s infinite alternate;
-  z-index: -1;
 }
 
 /* ================= HEADER ================= */
 header {
-  padding: 90px 20px 40px;
-  max-width: 900px;
-  margin: auto;
+  padding: 80px 20px 40px;
   text-align: center;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
   color: white;
-  background: linear-gradient(135deg, #1e3a8a, #0f172a);
-  border-radius: 0 0 30px 30px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-  animation: fadeDown 1s ease;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeIn 1s forwards;
 }
 
 header img {
@@ -51,23 +36,24 @@ header img {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #fbbf24;
-  box-shadow: 0 0 25px rgba(251,191,36,0.5);
-  animation: pulse 2.5s infinite;
+  margin-bottom: 15px;
 }
 
-/* typing name */
+/* TYPEWRITER (STABLE) */
 h1 {
   font-size: 40px;
-  margin-top: 15px;
-  white-space: nowrap;
+  color: #ffffff;
   overflow: hidden;
   border-right: 3px solid #fbbf24;
+  white-space: nowrap;
   width: 0;
-  animation: typing 3s steps(20) forwards, blink 0.8s infinite;
+  margin: 0 auto;
+  animation: typing 2.5s steps(20, end) forwards, blink 0.7s infinite;
 }
 
 .subtitle {
   color: #cbd5e1;
+  margin-top: 10px;
 }
 
 /* ================= NAV ================= */
@@ -76,35 +62,33 @@ nav {
   justify-content: center;
   gap: 25px;
   padding: 15px;
-  background: rgba(255,255,255,0.9);
-  backdrop-filter: blur(10px);
+  background: white;
   position: sticky;
   top: 0;
-  z-index: 10;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 nav a {
   text-decoration: none;
   color: #1e3a8a;
-  font-weight: 700;
+  font-weight: bold;
   transition: 0.3s;
 }
 
 nav a:hover {
-  transform: scale(1.15);
   color: #f59e0b;
+  transform: translateY(-2px);
 }
 
 /* ================= SECTIONS ================= */
 section {
   max-width: 850px;
   margin: auto;
-  padding: 70px 20px;
+  padding: 60px 20px;
 
   opacity: 0;
-  transform: translateY(60px);
-  transition: all 0.8s ease;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
 }
 
 section.show {
@@ -113,8 +97,7 @@ section.show {
 }
 
 h2 {
-  font-size: 22px;
-  border-left: 5px solid #f59e0b;
+  border-left: 4px solid #f59e0b;
   padding-left: 10px;
   color: #1e3a8a;
 }
@@ -122,56 +105,32 @@ h2 {
 /* ================= CARDS ================= */
 .item {
   background: white;
-  padding: 18px;
-  margin-bottom: 15px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transition: all 0.4s ease;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
 }
 
 .item:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 25px 50px rgba(245,158,11,0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
 /* ================= CONTACT ================= */
 .contact {
-  background: linear-gradient(135deg, #1e3a8a, #0f172a);
+  background: #0f172a;
   color: white;
   padding: 20px;
-  border-radius: 15px;
-}
-
-/* ================= FOOTER ================= */
-footer {
-  text-align: center;
-  padding: 40px;
-  font-size: 12px;
-  color: #6b7280;
+  border-radius: 12px;
 }
 
 /* ================= ANIMATIONS ================= */
-
-@keyframes gradientMove {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
-
-@keyframes floatGlow {
-  from { transform: translate(0,0); }
-  to { transform: translate(200px,150px); }
-}
-
-@keyframes fadeDown {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes typing {
@@ -194,15 +153,15 @@ footer {
 </header>
 
 <nav>
-  <a href="#about">ABOUT</a>
-  <a href="#experience">EXPERIENCE</a>
-  <a href="#projects">PROJECTS</a>
-  <a href="#contact">CONTACT</a>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
 </nav>
 
 <section id="about">
 <h2>About</h2>
-<p>I am an engineering student focused on physics, mechanics and applied systems.</p>
+<p>Engineering student focused on physics, mechanics and applied systems.</p>
 </section>
 
 <section id="experience">
@@ -224,28 +183,25 @@ footer {
 <h2>Contact</h2>
 
 <div class="contact">
-Email: omar.abdul@ensam.eu
+omar.abdul@ensam.eu
 </div>
 </section>
 
-<footer>
-© 2026 Omar Abdul
-</footer>
-
 <script>
-/* ================= SCROLL ANIMATION ================= */
+/* SCROLL ANIMATION RELIABLE */
 const sections = document.querySelectorAll("section");
 
-window.addEventListener("scroll", () => {
+function reveal() {
   sections.forEach(sec => {
-    const top = window.scrollY;
-    const offset = sec.offsetTop - 400;
-
-    if (top > offset) {
+    const top = sec.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
       sec.classList.add("show");
     }
   });
-});
+}
+
+window.addEventListener("scroll", reveal);
+reveal();
 </script>
 
 </body>
