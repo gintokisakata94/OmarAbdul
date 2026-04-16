@@ -3,304 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Omar | Portfolio</title>
+<title>Omar Abdul | Academic Portfolio</title>
 
 <style>
-html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f7fb;
-  color: #1f2937;
+  font-family: "Georgia", serif;
+  background: #ffffff;
+  color: #111827;
+  line-height: 1.7;
+}
+
+/* HEADER */
+header {
+  padding: 80px 20px 40px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+header img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: cover;
+  border: 2px solid #111827;
+}
+
+h1 {
+  font-size: 38px;
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #4b5563;
 }
 
 /* NAV */
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: white;
   display: flex;
   justify-content: center;
   gap: 25px;
-  padding: 14px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  z-index: 1000;
-  animation: fadeDown 0.8s ease;
+  padding: 15px;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  background: white;
 }
 
 nav a {
   text-decoration: none;
-  color: #1f3c88;
-  font-weight: bold;
-  transition: 0.3s;
+  color: #111827;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
 nav a:hover {
-  color: #0ea5e9;
-  transform: scale(1.1);
-}
-
-/* HERO */
-header {
-  height: 100vh;
-  background: linear-gradient(135deg, #1f3c88, #0ea5e9);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-header img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 3px solid white;
-  margin-bottom: 15px;
-  animation: float 3s ease-in-out infinite;
-}
-
-h1 {
-  font-size: 40px;
-  margin: 10px 0;
-}
-
-/* TYPING */
-.typing {
-  font-size: 18px;
-  border-right: 2px solid white;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 3s steps(40) forwards, blink 0.8s infinite;
+  text-decoration: underline;
 }
 
 /* SECTIONS */
 section {
-  max-width: 900px;
+  max-width: 850px;
   margin: auto;
-  padding: 90px 20px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s;
-}
-
-section.show {
-  opacity: 1;
-  transform: translateY(0);
+  padding: 60px 20px;
 }
 
 h2 {
-  color: #1f3c88;
+  font-size: 20px;
+  border-left: 3px solid #111827;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* CARD */
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 18px;
-  margin: 12px 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  transition: 0.3s;
+/* TEXT BLOCK */
+p {
+  font-size: 16px;
+  color: #1f2937;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+/* EXPERIENCE */
+.item {
+  margin-bottom: 20px;
 }
 
-/* ACCORDION */
-.accordion {
-  width: 100%;
-  text-align: left;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-  background: #1f3c88;
-  color: white;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: 0.3s;
+.title {
+  font-weight: bold;
 }
 
-.accordion:hover {
-  background: #0ea5e9;
-  transform: scale(1.02);
+.small {
+  color: #6b7280;
+  font-size: 14px;
 }
 
-.panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-  background: #eef2ff;
-  border-radius: 10px;
-  margin-top: 5px;
-}
-
-.panel p {
-  padding: 12px;
-}
-
-/* LINKS */
-a {
-  color: #0ea5e9;
+/* CONTACT */
+.contact {
+  background: #f9fafb;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 30px;
-  background: #111827;
-  color: white;
-}
-
-/* ANIMATIONS */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink {
-  50% { border-color: transparent }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes fadeDown {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  padding: 40px;
+  font-size: 12px;
+  color: #6b7280;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="#about">About</a>
-  <a href="#exp">Experience</a>
-  <a href="#proj">Projects</a>
-  <a href="#contact">Contact</a>
-</nav>
-
 <header>
-  <img src="https://via.placeholder.com/140">
+  <img src="https://via.placeholder.com/120">
   <h1>Omar Abdul</h1>
-
-  <div class="typing" id="typingText"></div>
+  <div class="subtitle">
+    Engineering Student — Arts et Métiers Institute of Technology
+  </div>
 </header>
 
+<nav>
+  <a href="#about">ABOUT</a>
+  <a href="#experience">EXPERIENCE</a>
+  <a href="#projects">PROJECTS</a>
+  <a href="#activities">ACTIVITIES</a>
+  <a href="#contact">CONTACT</a>
+</nav>
+
 <section id="about">
-<h2>Who am I?</h2>
+<h2>About</h2>
 
-<div class="card">
-My name is Omar and I study in Châlons-en-Champagne at Arts et Métiers Institute of Technology.
-
-<button class="accordion">More about me</button>
-<div class="panel">
 <p>
-Motivated, disciplined and curious engineering student interested in physics, mechanics and real-world systems.
+I am an engineering student based in Châlons-en-Champagne at Arts et Métiers Institute of Technology.  
+My academic interests focus on physics, mechanics, and applied engineering systems.
 </p>
+
+<p>
+Through my studies and experiences, I have developed discipline, adaptability, and a strong ability to work under pressure.
+</p>
+</section>
+
+<section id="experience">
+<h2>Professional Experience</h2>
+
+<div class="item">
+<div class="title">Retail Sales Assistant</div>
+<div class="small">Customer interaction, communication, adaptability</div>
 </div>
 
+<div class="item">
+<div class="title">Construction Worker</div>
+<div class="small">Teamwork, discipline, physical endurance</div>
+</div>
+
+<div class="item">
+<div class="title">Private Tutor</div>
+<div class="small">Teaching, clarity, responsibility</div>
 </div>
 </section>
 
-<section id="exp">
-<h2>Professional Experiences</h2>
+<section id="projects">
+<h2>Academic Projects</h2>
 
-<div class="card">
-Retail Sales Assistant
-<button class="accordion">Details</button>
-<div class="panel"><p>Customer communication, adaptability, responsibility.</p></div>
+<div class="item">
+<div class="title">Heat Sink Optimization (TIPE)</div>
+<div class="small">
+Study of thermal dissipation in electronic systems using modeling, simulation and experiments.
+</div>
 </div>
 
-<div class="card">
-Construction Worker
-<button class="accordion">Details</button>
-<div class="panel"><p>Teamwork, discipline, endurance under pressure.</p></div>
+<div class="item">
+<div class="title">Mechanical Systems & Randomness</div>
+<div class="small">
+Analysis of deterministic systems that appear random due to physical complexity.
 </div>
-
-<div class="card">
-Private Tutor
-<button class="accordion">Details</button>
-<div class="panel"><p>Teaching, patience, clarity of explanation.</p></div>
 </div>
-
 </section>
 
-<section id="proj">
-<h2>Projects</h2>
+<section id="activities">
+<h2>Activities & Interests</h2>
 
-<div class="card">
-TIPE — Heat Sink Optimization
-<button class="accordion">View details</button>
-<div class="panel"><p>Thermal analysis of electronic cooling systems using simulations and experiments.</p></div>
-</div>
-
-<div class="card">
-Mechanical System — Randomness Illusion
-<button class="accordion">View details</button>
-<div class="panel"><p>Study of deterministic systems appearing random due to physical complexity.</p></div>
-</div>
-
+<p>
+I am interested in student associations, teamwork projects, and intercultural exchange.  
+I also enjoy reading in English, working out at the gym, and continuous self-improvement.
+</p>
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
 
-<div class="card">
-Email: <a href="mailto:omar.abdul@ensam.eu">omar.abdul@ensam.eu</a><br>
-LinkedIn: <a href="https://www.linkedin.com/in/omarabdul94/" target="_blank">Profile</a>
+<div class="contact">
+<p>Email: <b>omar.abdul@ensam.eu</b></p>
+<p>LinkedIn: <b>linkedin.com/in/omarabdul94</b></p>
 </div>
 </section>
 
 <footer>
-© 2026 Omar Abdul
+© 2026 Omar Abdul — Academic Portfolio
 </footer>
-
-<script>
-
-/* ACCORDIONS */
-document.querySelectorAll(".accordion").forEach(btn => {
-  btn.addEventListener("click", function () {
-    const panel = this.nextElementSibling;
-    panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
-  });
-});
-
-/* SCROLL ANIMATION */
-const sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    const top = window.scrollY + window.innerHeight;
-    if (sec.offsetTop < top - 100) {
-      sec.classList.add("show");
-    }
-  });
-});
-
-/* TYPING EFFECT */
-const text = "Engineering student | Physics | Mechanics | Problem solver";
-let i = 0;
-
-function type() {
-  if (i < text.length) {
-    document.getElementById("typingText").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(type, 50);
-  }
-}
-
-type();
-
-</script>
 
 </body>
 </html>
