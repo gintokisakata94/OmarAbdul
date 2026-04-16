@@ -1,35 +1,201 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>TIPE Omar Abdul</title>
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      background: #f4f6f8;
-      padding: 40px;
-    }
-    h1 {
-      color: #1f3c88;
-    }
-    a {
-      display: block;
-      margin: 20px;
-      font-size: 18px;
-      color: blue;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #1f3c88;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: #ff4d4d;
+  }
+
+  /* HERO */
+  header {
+    height: 100vh;
+    background: linear-gradient(135deg, #1f3c88, #2c4aa5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  header img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    margin-bottom: 20px;
+  }
+
+  header h1 {
+    font-size: 40px;
+    margin: 10px 0;
+  }
+
+  header p {
+    font-size: 18px;
+    opacity: 0.9;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: auto;
+    padding: 80px 20px;
+  }
+
+  h2 {
+    color: #1f3c88;
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+
+  .card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  a.file {
+    color: #1f3c88;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  a.file:hover {
+    color: #ff4d4d;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    background: #1f3c88;
+    color: white;
+  }
+</style>
+
 </head>
+
 <body>
 
-<h1>TIPE - Omar Abdul</h1>
+<!-- NAV -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#documents">Documents</a>
+</nav>
 
-<p>Projet : Optimisation des dissipateurs thermiques</p>
+<!-- HERO -->
+<header>
+  <img src="https://via.placeholder.com/160" alt="profile">
+  <h1>Your Name</h1>
+  <p>Engineering Student | Physics | TIPE Projects</p>
+</header>
 
-<a href="ABDUL Omar TIPE.pdf" target="_blank">📄 Ouvrir le TIPE</a>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    I am a motivated engineering student passionate about physics, mechanics and applied sciences.
+    I enjoy understanding how systems work and turning theory into real experiments.
+  </div>
+</section>
 
-<a href="Quels phénomènes permettent à un système entièrement mécanique.pdf" target="_blank">📄 Voir le résumé</a>
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="card">
+    <strong>TIPE:</strong> Heat Sink Optimization<br>
+    Study of thermal dissipation and energy efficiency in electronic components.
+  </div>
+
+  <div class="card">
+    <strong>Mechanical System:</strong> Illusion of randomness<br>
+    Analysis of deterministic systems that appear random.
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="card">
+    Sales assistant (retail clothing)<br>
+    → communication & customer interaction
+  </div>
+
+  <div class="card">
+    Construction worker<br>
+    → discipline & teamwork
+  </div>
+
+  <div class="card">
+    Private tutoring<br>
+    → teaching & responsibility
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section id="documents">
+  <h2>Documents</h2>
+
+  <div class="card">
+    📄 <a class="file" href="ABDUL Omar TIPE.pdf" target="_blank">TIPE Report (PDF)</a>
+  </div>
+
+  <div class="card">
+    📄 <a class="file" href="Quels phénomènes permettent à un système entièrement mécanique.pdf" target="_blank">Mechanical System Report</a>
+  </div>
+</section>
+
+<footer>
+  Portfolio - 2026
+</footer>
 
 </body>
 </html>
