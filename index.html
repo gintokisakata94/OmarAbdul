@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Omar Abdul — Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,9 +13,9 @@
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: #fdfcf9;
-  color: #1c1c1c;
-  line-height: 1.8;
+  background: #f9fafb;
+  color: #1f2937;
+  scroll-behavior: smooth;
 }
 
 /* PROGRESS BAR */
@@ -24,8 +23,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: #1e3a8a;
+  height: 4px;
+  background: #2563eb;
   width: 0%;
   z-index: 999;
 }
@@ -33,27 +32,26 @@ body {
 /* NAV */
 nav {
   position: fixed;
-  width: 100%;
   top: 0;
-  background: rgba(253,252,249,0.85);
+  width: 100%;
+  background: rgba(255,255,255,0.8);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
-  gap: 35px;
-  padding: 18px;
-  border-bottom: 1px solid #eee;
+  gap: 30px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 nav a {
   text-decoration: none;
-  color: #555;
-  font-size: 14px;
-  letter-spacing: 1px;
+  color: #374151;
+  font-weight: 500;
   transition: 0.3s;
 }
 
 nav a:hover {
-  color: #1e3a8a;
+  color: #2563eb;
 }
 
 /* HERO */
@@ -64,22 +62,21 @@ header {
   justify-content: center;
   text-align: center;
   padding: 20px;
+  background: linear-gradient(180deg,#ffffff,#f1f5f9);
 }
 
 h1 {
   font-family: "Playfair Display", serif;
-  font-size: 64px;
-  font-weight: 600;
-  letter-spacing: -1px;
+  font-size: 60px;
+  margin: 0;
 }
 
-/* TYPING */
 .typing {
-  border-right: 2px solid #1e3a8a;
+  border-right: 2px solid #2563eb;
   white-space: nowrap;
   overflow: hidden;
   width: 0;
-  animation: typing 2.5s steps(20) forwards;
+  animation: typing 3s steps(20) forwards;
 }
 
 @keyframes typing {
@@ -88,40 +85,43 @@ h1 {
 
 .subtitle {
   margin-top: 20px;
-  color: #777;
-  font-size: 16px;
+  color: #6b7280;
 }
 
 /* SECTIONS */
 section {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
-  padding: 110px 20px;
+  padding: 100px 20px;
 }
 
-/* TITLES */
+/* TITLE */
 h2 {
   font-family: "Playfair Display", serif;
-  font-size: 36px;
+  font-size: 32px;
   margin-bottom: 40px;
 }
 
-/* CARDS */
+/* GRID ALTERNATING */
+.grid {
+  display: grid;
+  gap: 40px;
+}
+
 .card {
-  background: #ffffff;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  padding: 28px;
-  margin-bottom: 20px;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   transition: 0.3s;
   cursor: pointer;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
-/* DROPDOWN */
+/* PROJECT DROPDOWN */
 .content {
   max-height: 0;
   overflow: hidden;
@@ -129,17 +129,24 @@ h2 {
 }
 
 .card.active .content {
-  max-height: 400px;
+  max-height: 500px;
 }
 
 /* IMAGE */
 img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 15px;
 }
 
-/* FADE ANIM */
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+}
+
+/* ANIM */
 .fade {
   opacity: 0;
   transform: translateY(40px);
@@ -149,14 +156,6 @@ img {
 .fade.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 50px;
-  color: #888;
-  font-size: 14px;
 }
 
 </style>
@@ -184,34 +183,39 @@ footer {
 <section id="about" class="fade">
 <h2>About Me</h2>
 <p>
-I am an engineering student passionate about mechanics, physics, and analytical problem-solving.
-My goal is to apply rigorous thinking to real-world engineering challenges.
+I am an engineering student based in France, passionate about mechanics, physics and data-driven systems.
+I am currently looking for opportunities to apply my skills in real-world engineering environments.
 </p>
 </section>
 
 <section id="journey" class="fade">
 <h2>My Journey</h2>
+<div class="grid">
 
 <div class="card">
-<h3>Arts et Métiers (ENSAM)</h3>
-<p>Engineering degree (2025–2028)</p>
+<h3>ENSAM</h3>
+<p>Engineering school</p>
 </div>
 
 <div class="card">
-<h3>CPGE PT / PT*</h3>
-<p>Intensive preparation in mathematics and physics</p>
+<h3>CPGE</h3>
+<p>2 years of intensive preparation</p>
 </div>
 
+</div>
 </section>
 
 <section id="projects" class="fade">
 <h2>Projects</h2>
 
+<div class="grid">
+
 <div class="card" onclick="toggle(this)">
 <img src="https://images.unsplash.com/photo-1581091870627-3c74b56d7f3a">
-<h3>Tensile Testing of Rope Splices</h3>
+<h3>Rope Splice Testing</h3>
 <div class="content">
-<p>Experimental mechanical testing and analysis.</p>
+<p>Mechanical testing to determine breaking limits.</p>
+<a href="#">View PDF</a>
 </div>
 </div>
 
@@ -219,25 +223,29 @@ My goal is to apply rigorous thinking to real-world engineering challenges.
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 <h3>Thermal Optimization</h3>
 <div class="content">
-<p>Simulation and modeling of heat transfer.</p>
+<p>Simulation of heat transfer in electronic systems.</p>
 </div>
 </div>
 
+</div>
 </section>
 
 <section id="experience" class="fade">
 <h2>Experience</h2>
 
+<div class="grid">
+
 <div class="card">
-<h3>Private Tutor</h3>
-<p>Mathematics & Physics</p>
+<h3>Tutor</h3>
+<p>Teaching maths & physics</p>
 </div>
 
 <div class="card">
-<h3>Construction Worker</h3>
-<p>Teamwork and logistics</p>
+<h3>Construction</h3>
+<p>Teamwork & logistics</p>
 </div>
 
+</div>
 </section>
 
 <section id="contact" class="fade">
@@ -252,12 +260,12 @@ My goal is to apply rigorous thinking to real-world engineering challenges.
 
 <script>
 
-// dropdown
+// DROPDOWN PROJECTS
 function toggle(card){
   card.classList.toggle("active");
 }
 
-// scroll anim
+// SCROLL ANIM
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -268,7 +276,7 @@ const observer = new IntersectionObserver(entries=>{
 
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el))
 
-// progress bar
+// PROGRESS BAR
 window.onscroll = () => {
   let winScroll = document.documentElement.scrollTop;
   let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
