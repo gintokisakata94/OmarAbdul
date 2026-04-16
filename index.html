@@ -6,15 +6,13 @@
 <title>Portfolio</title>
 
 <style>
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b1220;
-  color: #e5e7eb;
+  font-family: "Arial", sans-serif;
+  background: #0a0a0a;
+  color: #eae6df;
 }
 
 /* NAV */
@@ -22,24 +20,26 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(15px);
+  background: rgba(10,10,10,0.6);
+  backdrop-filter: blur(20px);
   display: flex;
   justify-content: center;
-  gap: 25px;
-  padding: 12px;
+  gap: 30px;
+  padding: 14px;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 nav a {
-  color: #cbd5e1;
+  color: #d6c7a1;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
+  letter-spacing: 1px;
   transition: 0.3s;
 }
 
 nav a:hover {
-  color: #38bdf8;
+  color: #ffffff;
 }
 
 /* HERO */
@@ -50,23 +50,24 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: radial-gradient(circle at top, #1e293b, #0b1220);
+  background: radial-gradient(circle at top, #1a1a1a, #0a0a0a);
 }
 
 header img {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  border: 3px solid #38bdf8;
-  box-shadow: 0 0 30px rgba(56,189,248,0.4);
+  border: 2px solid #d6c7a1;
+  box-shadow: 0 0 40px rgba(214,199,161,0.15);
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 1s ease forwards;
 }
 
 header h1 {
-  font-size: 44px;
+  font-size: 48px;
   margin: 15px 0;
+  letter-spacing: 2px;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 1s ease forwards;
@@ -74,26 +75,28 @@ header h1 {
 }
 
 header p {
-  opacity: 0;
+  opacity: 0.7;
+  font-size: 18px;
   animation: fadeUp 1s ease forwards;
   animation-delay: 0.4s;
 }
 
 .btn {
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: #38bdf8;
-  color: black;
-  border-radius: 10px;
+  margin-top: 25px;
+  padding: 12px 26px;
+  border: 1px solid #d6c7a1;
+  color: #d6c7a1;
   text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
+  border-radius: 12px;
+  transition: 0.4s;
   opacity: 0;
   animation: fadeUp 1s ease forwards;
   animation-delay: 0.6s;
 }
 
 .btn:hover {
+  background: #d6c7a1;
+  color: #0a0a0a;
   transform: scale(1.05);
 }
 
@@ -101,19 +104,26 @@ header p {
 section {
   max-width: 900px;
   margin: auto;
-  padding: 90px 20px;
+  padding: 100px 20px;
 }
 
-/* ANIMATION CARDS */
+h2 {
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: #d6c7a1;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
 .card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.08);
-  padding: 20px;
+  padding: 22px;
   margin: 15px 0;
   border-radius: 14px;
+  transition: 0.5s;
   opacity: 0;
   transform: translateY(40px);
-  transition: all 0.6s ease;
 }
 
 .card.show {
@@ -121,28 +131,35 @@ section {
   transform: translateY(0);
 }
 
-h2 {
-  color: #38bdf8;
+.card:hover {
+  border-color: #d6c7a1;
+  transform: translateY(-5px);
 }
 
-/* KEYFRAME */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* LINKS */
 a {
-  color: #38bdf8;
+  color: #d6c7a1;
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 30px;
-  opacity: 0.6;
+  padding: 40px;
+  opacity: 0.5;
+  font-size: 13px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
 
@@ -151,58 +168,60 @@ footer {
 <body>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#experience">Experience</a>
-  <a href="#documents">Documents</a>
+  <a href="#about">ABOUT</a>
+  <a href="#projects">PROJECTS</a>
+  <a href="#experience">EXPERIENCE</a>
+  <a href="#documents">DOCUMENTS</a>
 </nav>
 
 <header>
-  <img src="https://via.placeholder.com/140">
-  <h1>Your Name</h1>
-  <p>Engineering Student | Physics | TIPE</p>
-  <a class="btn" href="#about">Explore</a>
+  <img src="https://via.placeholder.com/150">
+  <h1>YOUR NAME</h1>
+  <p>Engineering Student | Physics | Applied Sciences</p>
+  <a class="btn" href="#about">ENTER</a>
 </header>
 
 <section id="about">
-  <h2>About Me</h2>
+  <h2>ABOUT</h2>
   <div class="card">
-    Passionate engineering student interested in physics, mechanics, and applied sciences.
+    Engineering student passionate about physics, mechanics, and systems modeling.
+    I focus on understanding real-world systems through mathematical and experimental approaches.
   </div>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2>PROJECTS</h2>
 
-  <div class="card">🔥 TIPE — Heat Sink Optimization</div>
-  <div class="card">🎲 Mechanical randomness system</div>
+  <div class="card">TIPE — Heat Sink Optimization (thermal efficiency analysis)</div>
+  <div class="card">Mechanical System — Deterministic randomness modeling</div>
 </section>
 
 <section id="experience">
-  <h2>Experience</h2>
+  <h2>EXPERIENCE</h2>
 
-  <div class="card">Retail Sales Assistant</div>
-  <div class="card">Construction Worker</div>
-  <div class="card">Private Tutor</div>
+  <div class="card">Retail Sales Assistant — communication & client interaction</div>
+  <div class="card">Construction Worker — discipline & physical resilience</div>
+  <div class="card">Private Tutor — teaching & responsibility</div>
 </section>
 
 <section id="documents">
-  <h2>Documents</h2>
+  <h2>DOCUMENTS</h2>
 
   <div class="card">
-    <a href="ABDUL Omar TIPE.pdf" target="_blank">TIPE Report PDF</a>
+    <a href="ABDUL Omar TIPE.pdf" target="_blank">Download TIPE Report</a>
   </div>
 
   <div class="card">
-    <a href="Quels phénomènes permettent à un système entièrement mécanique.pdf" target="_blank">Mechanical Report PDF</a>
+    <a href="Quels phénomènes permettent à un système entièrement mécanique.pdf" target="_blank">
+      Download Mechanical Study
+    </a>
   </div>
 </section>
 
 <footer>
-  Portfolio — 2026
+  © 2026 — Portfolio
 </footer>
 
-<!-- SCRIPT ANIMATION SCROLL -->
 <script>
 const cards = document.querySelectorAll('.card');
 
@@ -214,9 +233,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.2 });
 
-cards.forEach(card => {
-  observer.observe(card);
-});
+cards.forEach(c => observer.observe(c));
 </script>
 
 </body>
