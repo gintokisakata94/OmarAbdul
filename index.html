@@ -26,12 +26,20 @@ nav {
   gap: 25px;
   padding: 14px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  z-index: 1000;
+  animation: fadeDown 0.8s ease;
 }
 
 nav a {
   text-decoration: none;
   color: #1f3c88;
   font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #0ea5e9;
+  transform: scale(1.1);
 }
 
 /* HERO */
@@ -51,13 +59,38 @@ header img {
   height: 140px;
   border-radius: 50%;
   border: 3px solid white;
+  margin-bottom: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 10px 0;
+}
+
+/* TYPING */
+.typing {
+  font-size: 18px;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(40) forwards, blink 0.8s infinite;
 }
 
 /* SECTIONS */
 section {
   max-width: 900px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 90px 20px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 h2 {
@@ -71,43 +104,46 @@ h2 {
   padding: 18px;
   margin: 12px 0;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: 0.3s;
 }
 
-/* ACCORDION BUTTON */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ACCORDION */
 .accordion {
   width: 100%;
   text-align: left;
-  padding: 15px;
-  font-size: 16px;
+  padding: 14px;
   border: none;
-  cursor: pointer;
+  border-radius: 10px;
   background: #1f3c88;
   color: white;
-  border-radius: 10px;
+  cursor: pointer;
   margin-top: 10px;
   transition: 0.3s;
 }
 
 .accordion:hover {
   background: #0ea5e9;
+  transform: scale(1.02);
 }
 
-/* PANEL (hidden content) */
 .panel {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease;
   background: #eef2ff;
   border-radius: 10px;
-  padding: 0 15px;
   margin-top: 5px;
 }
 
 .panel p {
-  padding: 15px 0;
+  padding: 12px;
 }
 
-/* CONTACT */
+/* LINKS */
 a {
   color: #0ea5e9;
 }
@@ -118,6 +154,27 @@ footer {
   padding: 30px;
   background: #111827;
   color: white;
+}
+
+/* ANIMATIONS */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 </style>
 </head>
@@ -134,19 +191,20 @@ footer {
 <header>
   <img src="https://via.placeholder.com/140">
   <h1>Omar Abdul</h1>
-  <p>Engineering Student | Arts et Métiers Institute of Technology</p>
+
+  <div class="typing" id="typingText"></div>
 </header>
 
 <section id="about">
 <h2>Who am I?</h2>
 
 <div class="card">
-My name is Omar and I am currently studying in Châlons-en-Champagne at Arts et Métiers Institute of Technology.
+My name is Omar and I study in Châlons-en-Champagne at Arts et Métiers Institute of Technology.
 
 <button class="accordion">More about me</button>
 <div class="panel">
 <p>
-I am motivated, disciplined and curious. I enjoy understanding technical systems and solving engineering problems.
+Motivated, disciplined and curious engineering student interested in physics, mechanics and real-world systems.
 </p>
 </div>
 
@@ -158,23 +216,20 @@ I am motivated, disciplined and curious. I enjoy understanding technical systems
 
 <div class="card">
 Retail Sales Assistant
-
 <button class="accordion">Details</button>
-<div class="panel"><p>Communication, customer interaction, adaptability in real environments.</p></div>
+<div class="panel"><p>Customer communication, adaptability, responsibility.</p></div>
 </div>
 
 <div class="card">
 Construction Worker
-
 <button class="accordion">Details</button>
-<div class="panel"><p>Discipline, teamwork, endurance and physical resilience.</p></div>
+<div class="panel"><p>Teamwork, discipline, endurance under pressure.</p></div>
 </div>
 
 <div class="card">
 Private Tutor
-
 <button class="accordion">Details</button>
-<div class="panel"><p>Teaching skills, clarity, patience and responsibility.</p></div>
+<div class="panel"><p>Teaching, patience, clarity of explanation.</p></div>
 </div>
 
 </section>
@@ -184,20 +239,14 @@ Private Tutor
 
 <div class="card">
 TIPE — Heat Sink Optimization
-
 <button class="accordion">View details</button>
-<div class="panel">
-<p>Study of thermal dissipation in electronic components using simulation and experiments.</p>
-</div>
+<div class="panel"><p>Thermal analysis of electronic cooling systems using simulations and experiments.</p></div>
 </div>
 
 <div class="card">
 Mechanical System — Randomness Illusion
-
 <button class="accordion">View details</button>
-<div class="panel">
-<p>Analysis of deterministic systems that appear random due to physical complexity.</p>
-</div>
+<div class="panel"><p>Study of deterministic systems appearing random due to physical complexity.</p></div>
 </div>
 
 </section>
@@ -216,19 +265,41 @@ LinkedIn: <a href="https://www.linkedin.com/in/omarabdul94/" target="_blank">Pro
 </footer>
 
 <script>
-const acc = document.querySelectorAll(".accordion");
 
-acc.forEach(btn => {
+/* ACCORDIONS */
+document.querySelectorAll(".accordion").forEach(btn => {
   btn.addEventListener("click", function () {
     const panel = this.nextElementSibling;
+    panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+  });
+});
 
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = window.scrollY + window.innerHeight;
+    if (sec.offsetTop < top - 100) {
+      sec.classList.add("show");
     }
   });
 });
+
+/* TYPING EFFECT */
+const text = "Engineering student | Physics | Mechanics | Problem solver";
+let i = 0;
+
+function type() {
+  if (i < text.length) {
+    document.getElementById("typingText").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 50);
+  }
+}
+
+type();
+
 </script>
 
 </body>
