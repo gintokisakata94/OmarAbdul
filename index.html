@@ -35,7 +35,29 @@ body {
   font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
-  /* Curseur par défaut rétabli */
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease;
+  transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.4s ease, width 0.3s, height 0.3s, opacity 0.3s;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
 }
 
 #progress-bar {
@@ -127,12 +149,14 @@ nav ul a:hover { color: var(--ink); }
   z-index: 2;
 }
 
+/* ── PHOTO FRAME ── */
 .photo-frame-wrap {
   position: relative;
   width: 360px;
   height: 460px;
   z-index: 1;
 }
+
 
 .photo-container {
   position: relative;
@@ -144,6 +168,13 @@ nav ul a:hover { color: var(--ink); }
   background: var(--bg2);
 }
 
+
+
+
+
+
+  
+/* IMAGE ONLY */
 .photo-container img {
   width: 100%;
   height: 100%;
@@ -158,6 +189,7 @@ nav ul a:hover { color: var(--ink); }
   transform: scale(1.03);
 }
 
+/* HERO TEXT */
 .hero-eyebrow {
   display: flex;
   align-items: center;
@@ -217,6 +249,7 @@ nav ul a:hover { color: var(--ink); }
   font-weight: 500;
 }
 
+/* BUTTONS */
 .hero-ctas {
   display: flex;
   gap: 14px;
@@ -266,6 +299,13 @@ nav ul a:hover { color: var(--ink); }
   background: rgba(26, 23, 20, 0.04);
 }
 
+
+
+
+
+
+
+  
 /* ── SECTION ── */
 .section {
   max-width: 1080px;
@@ -280,8 +320,7 @@ nav ul a:hover { color: var(--ink); }
   color: var(--accent);
   margin-bottom: 16px;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: center; gap: 12px;
 }
 .section-label::before {
   content: '';
@@ -316,7 +355,6 @@ nav ul a:hover { color: var(--ink); }
   font-weight: 300;
 }
 .about-text p strong { color: var(--ink); font-weight: 500; }
-
 .cv-download-card {
   display: flex;
   align-items: center; gap: 16px;
@@ -342,7 +380,6 @@ nav ul a:hover { color: var(--ink); }
 .cv-card-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
 .cv-card-sub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
 .cv-arrow { stroke: var(--accent); }
-
 .about-aside { display: flex; flex-direction: column; gap: 0; }
 .stat-item {
   padding: 28px 0;
@@ -384,8 +421,7 @@ nav ul a:hover { color: var(--ink); }
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 3px;
-  height: 100%;
+  width: 3px; height: 100%;
   background: linear-gradient(to bottom, var(--accent), var(--accent2));
 }
 .edu-year { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px; }
@@ -407,33 +443,27 @@ nav ul a:hover { color: var(--ink); }
 .project-num { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
 .project-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--ink); transition: color 0.2s; letter-spacing: -0.3px; }
 .project-period { font-size: 12px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.06em; }
-
 .process-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .process-badge { font-family: var(--mono); font-size: 10px; padding: 3px 9px; background: var(--accent-light); color: var(--accent); border: 1px solid rgba(139,58,42,0.2); letter-spacing: 0.06em; text-transform: uppercase; }
-
 .project-toggle-btn { width: 40px; height: 40px; border: 1px solid var(--border); background: transparent; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; flex-shrink: 0; }
 .project-toggle-btn svg { transition: transform 0.3s; stroke: var(--ink2); }
 .project-toggle-btn:hover { border-color: var(--accent); background: var(--accent-light); }
 .project-toggle-btn:hover svg { stroke: var(--accent); }
 .project-toggle-btn.open { border-color: var(--accent); background: var(--accent-light); }
 .project-toggle-btn.open svg { transform: rotate(45deg); stroke: var(--accent); }
-
 .project-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 .project-body.open { max-height: 1200px; }
 .project-body-inner { padding-bottom: 40px; display: grid; grid-template-columns: 1fr 280px; gap: 48px; }
 .project-details ul { list-style: none; margin-bottom: 28px; }
 .project-details ul li { color: var(--ink2); font-size: 14px; line-height: 1.75; padding-left: 20px; position: relative; margin-bottom: 10px; font-weight: 300; }
 .project-details ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background: var(--accent); }
-
 .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .tag { font-size: 11px; padding: 4px 12px; background: transparent; color: var(--muted); border: 1px solid var(--border); letter-spacing: 0.06em; font-family: var(--mono); }
-
 .project-aside { display: flex; flex-direction: column; gap: 16px; }
 .project-aside-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
 .project-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; border: 1px solid rgba(139,58,42,0.3); padding: 10px 18px; letter-spacing: 0.04em; transition: background 0.2s; }
 .project-link:hover { background: var(--accent-light); }
 .project-link svg { stroke: var(--accent); }
-
 .process-steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 28px; }
 .process-step { display: grid; grid-template-columns: 32px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border2); align-items: start; }
 .process-step:last-child { border-bottom: none; }
@@ -466,7 +496,6 @@ nav ul a:hover { color: var(--ink); }
 .pill { font-size: 15px; color: var(--ink2); font-weight: 300; padding: 8px 0; border-bottom: 1px solid var(--border2); transition: color 0.2s, padding-left 0.2s; }
 .pill:last-child { border-bottom: none; }
 .pill:hover { color: var(--accent); padding-left: 6px; }
-
 .interests-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 32px; display: flex; align-items: center; gap: 10px; }
 .interests-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--muted); }
 .interests-row { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -519,7 +548,7 @@ nav ul a:hover { color: var(--ink); }
 .contact-link.email { background: var(--accent); color: white; }
 .contact-link.email:hover { background: #6d2d1e; }
 .contact-link.linkedin { background: transparent; color: var(--ink); border: 1px solid var(--border); }
-.contact-link.linkedin:hover { border-color: var(--ink); background: rgba(26, 23, 20, 0.04); }
+.contact-link.linkedin:hover { border-color: var(--ink); background: rgba(26,23,20,0.04); }
 
 footer { background: var(--ink); text-align: center; padding: 28px 40px; color: rgba(255,255,255,0.2); font-size: 12px; font-family: var(--mono); letter-spacing: 0.1em; }
 
@@ -534,19 +563,15 @@ footer { background: var(--ink); text-align: center; padding: 28px 40px; color: 
 .pdf-modal-overlay.active .pdf-modal { transform: translateY(0) scale(1); }
 .pdf-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--border2); background: var(--surface2); gap: 16px; flex-shrink: 0; }
 .pdf-modal-title { font-family: var(--mono); font-size: 12px; color: var(--ink2); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
 .pdf-modal-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .pdf-modal-dl { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; background: var(--accent); color: #fff; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s; font-family: 'Outfit', sans-serif; }
 .pdf-modal-dl:hover { background: #6d2d1e; }
 .pdf-modal-dl svg { stroke: #fff; }
-
 .pdf-modal-close { width: 36px; height: 36px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s; }
 .pdf-modal-close:hover { background: rgba(139,58,42,0.08); border-color: var(--accent); }
 .pdf-modal-close svg { stroke: var(--ink2); }
-
 .pdf-modal-body { flex: 1; position: relative; overflow: hidden; }
 .pdf-modal-body iframe { width: 100%; height: 100%; border: none; display: block; }
-
 .pdf-loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: var(--surface); z-index: 2; transition: opacity 0.3s; }
 .pdf-loading.hidden { opacity: 0; pointer-events: none; }
 .pdf-spinner { width: 36px; height: 36px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
@@ -574,13 +599,17 @@ button.project-link { background: transparent; border: 1px solid rgba(139,58,42,
   .exp-sidebar { display: none; }
   .exp-item { grid-template-columns: 56px 1fr; }
   #contact { padding: 80px 24px; }
+  .hero-scroll { display: none; }
 }
 </style>
 </head>
 <body>
 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 <div id="progress-bar"></div>
 
+<!-- NAV -->
 <nav>
   <a href="#hero" class="logo">Omar Abdul<em>.</em></a>
   <ul>
@@ -594,42 +623,702 @@ button.project-link { background: transparent; border: 1px solid rgba(139,58,42,
     <li><a href="#contact">Contact</a></li>
     <li>
       <a href="CV_ABDUL_Omar.pdf" download class="nav-cv-btn">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
         CV
       </a>
     </li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">
       <div class="eyebrow-line"></div>
-      <div class="eyebrow-text">Design & Engineering</div>
+      <span class="eyebrow-text">Engineering Student</span>
     </div>
-    <h1 class="hero-name">Omar <em>Abdul</em></h1>
-    <div class="hero-subtitle">M.Sc. Systems Engineering & Automation</div>
+    <h1 class="hero-name">Omar<br><em>Abdul</em></h1>
+    <p class="hero-subtitle">Mechanical Engineer — ENSAM</p>
     <p class="hero-desc">
-      Passionate about <strong>Robotics</strong>, <strong>AI</strong>, and <strong>Embedded Systems</strong>. 
-      Bridging the gap between theory and real-world application through innovative engineering solutions.
+      Engineering student at Arts et Métiers, one of France's leading schools. Passionate about <strong>mechanical systems</strong>.
     </p>
     <div class="hero-ctas">
       <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-secondary">Let's Talk</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-dot"></div>
+      Scroll to explore
     </div>
   </div>
+
+
   <div class="hero-right">
     <div class="photo-frame-wrap">
       <div class="photo-container">
-        <img src="your-photo.jpg" alt="Omar Abdul">
+        <img src="photocv1.png" alt="Omar Abdul — Mechanical Engineering Student at ENSAM" />
+      </div>
+      <div class="photo-corner photo-corner--tl"></div>
+      <div class="photo-corner photo-corner--br"></div>
+      <div class="photo-accent-line"></div>
+      <div class="photo-accent-dot"></div>
+    </div>
+  </div>
+</section>
+
+
+
+  
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section">
+    <div class="section-label">About me</div>
+    <div class="section-title">Who I <em>am</em></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm <strong>Omar Abdul</strong>, an engineering student at Arts et Métiers (ENSAM), one of France's top engineering schools. I joined after completing two years of intensive <em>CPGE</em> — a rigorous preparatory program covering engineering sciences, advanced mathematics, physics, and computer science.</p>
+        <p>My approach to engineering is grounded in <strong>rigor, consistency, and curiosity</strong> for how things work. I thrive at the intersection of physical intuition and computational modeling, turning complex problems into measurable, validated outcomes.</p>
+        <p>Beyond engineering, I'm committed to sharing knowledge: I have been tutoring students in mathematics and physics since 2022, adapting my explanations to each learner's pace and background. Teaching has sharpened my ability to communicate complex ideas clearly.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+          <button onclick="previewPDF('CV_ABDUL_Omar.pdf','CV — Omar Abdul')" style="flex:1; display:flex; align-items:center; gap:12px; padding:18px 20px; border:1px solid rgba(139,58,42,0.25); background:var(--accent-light); cursor:pointer; text-align:left; transition:border-color 0.2s; font-family:inherit;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(139,58,42,0.25)'">
+            <div class="cv-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><path d="M9 21V9"/></svg></div>
+            <div class="cv-card-text"><div class="cv-card-title">View CV</div><div class="cv-card-sub">Open in browser</div></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+        <a href="CV_ABDUL_Omar.pdf" download class="cv-download-card">
+          <div class="cv-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <line x1="9" y1="15" x2="15" y2="15"/>
+            </svg>
+          </div>
+          <div class="cv-card-text">
+            <div class="cv-card-title">Curriculum Vitae</div>
+            <div class="cv-card-sub">PDF · Omar Abdul · 2026</div>
+          </div>
+          <svg class="cv-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </a>
+      </div>
+      <div class="about-aside">
+        <div class="stat-item">
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label">Engineering projects completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Programming languages</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2<span>+</span></div>
+          <div class="stat-label">Years of private tutoring</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" style="font-size:28px; letter-spacing:-0.5px; margin-bottom:8px;">ENSAM</div>
+          <div class="stat-label">Top French engineering school</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section">
+    <div class="section-label">Academic background</div>
+    <div class="section-title">Education</div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-year">2025 — 2028</div>
+        <h3>Arts et Métiers (ENSAM) — Institute of Technology</h3>
+        <p>Engineering degree in mechanical engineering, materials science, design, and project management. One of France's most selective schools, recognized internationally for excellence in applied engineering sciences.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2022 — 2025</div>
+        <h3>Lycée Raspail — CPGE PT / PT*</h3>
+        <p>Highly competitive two-year preparatory program for France's top engineering schools. Intensive coursework in engineering sciences, advanced mathematics, physics, and computer science — widely regarded as among the most demanding undergraduate-level programs in the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section">
+    <div class="section-label">Selected work</div>
+    <div class="section-title">Projects</div>
+    <div class="project-list">
+
+      <!-- PROJECT 1 -->
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <div class="project-header-left">
+            <span class="project-num">01</span>
+            <div class="project-title">FAB IMP — Multi-Process Part Design</div>
+            <div class="project-period">ENSAM · Manufacturing · Metrology · Additive &amp; Subtractive Manufacturing</div>
+            <div class="process-badges">
+              <span class="process-badge">Metrology</span>
+              <span class="process-badge">Additive Mfg</span>
+              <span class="process-badge">Machining</span>
+              <span class="process-badge">Materials</span>
+              <span class="process-badge">GD&amp;T</span>
+              <span class="process-badge">SolidWorks</span>
+            </div>
+          </div>
+          <button class="project-toggle-btn" aria-label="Toggle project">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round">
+              <line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/>
+            </svg>
+          </button>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-details">
+              <p style="font-size:14px; color:var(--ink2); font-weight:300; line-height:1.85; margin-bottom:24px;">Designed and manufactured a mechanical part using the full fabrication pipeline taught at Arts et Métiers — from metrology and material characterization to additive manufacturing and conventional machining.</p>
+              <div class="process-steps">
+                <div class="process-step"><span class="step-num">01</span><div><div class="step-title">Metrology &amp; Characterization</div><div class="step-desc">Dimensional inspection using precision instruments. Established baseline tolerances for downstream processes.</div></div></div>
+                <div class="process-step"><span class="step-num">02</span><div><div class="step-title">CAD Design &amp; Engineering Drawing</div><div class="step-desc">Modeled in SolidWorks with fully annotated manufacturing drawings, GD&amp;T tolerances and surface finish requirements.</div></div></div>
+                <div class="process-step"><span class="step-num">03</span><div><div class="step-title">Additive Manufacturing (FDM)</div><div class="step-desc">Produced a prototype via 3D printing. Analyzed layer deposition, surface finish, and dimensional accuracy.</div></div></div>
+                <div class="process-step"><span class="step-num">04</span><div><div class="step-title">Subtractive Manufacturing — Machining</div><div class="step-desc">Machined the final part on a conventional lathe and milling machine. Applied full workshop safety protocol.</div></div></div>
+                <div class="process-step"><span class="step-num">05</span><div><div class="step-title">Process Comparison &amp; Analysis</div><div class="step-desc">Compared additive vs subtractive across accuracy, surface roughness, and mechanical properties.</div></div></div>
+              </div>
+              <div class="project-tags">
+                <span class="tag">SolidWorks</span><span class="tag">Metrology</span><span class="tag">FDM / 3D Printing</span><span class="tag">Turning / Milling</span><span class="tag">GD&amp;T</span><span class="tag">Materials Science</span>
+              </div>
+            </div>
+            <div class="project-aside">
+              <span class="project-aside-label">Documents</span>
+              <button class="project-link" onclick="previewPDF('FAB%20IMP%20Project%20%E2%80%94%20Multi-Process%20Part%20Design%20Report.pdf', 'FAB IMP — Report')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                View report
+              </button>
+              <a href="FAB%20IMP%20Project%20%E2%80%94%20Multi-Process%20Part%20Design%20Report.pdf" download class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download report
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <div class="project-header-left">
+            <span class="project-num">02</span>
+            <div class="project-title">Tensile Testing of Rope Splices</div>
+            <div class="project-period">Sept 2025 — Jan 2026 · ENSAM · Industrial Partnership</div>
+            <div class="process-badges">
+              <span class="process-badge">Mech. Testing</span><span class="process-badge">Machining</span><span class="process-badge">SolidWorks</span><span class="process-badge">Exp. Methods</span><span class="process-badge">Industrial Partner</span>
+            </div>
+          </div>
+          <button class="project-toggle-btn" aria-label="Toggle project">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
+          </button>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-details">
+              <ul>
+                <li>Conducted tensile tests on rope splices to determine breaking load under controlled conditions.</li>
+                <li>Designed and precisely machined custom gripping jaws to ensure reliable sample mounting and accurate force measurements.</li>
+                <li>Coordinated with an external industrial partner, maintaining a rigorous experimental protocol throughout.</li>
+                <li>Analyzed results to draw conclusions about splice geometry and its influence on mechanical resistance.</li>
+              </ul>
+              <div class="project-tags"><span class="tag">Mechanical Testing</span><span class="tag">Machining</span><span class="tag">SolidWorks</span><span class="tag">Experimental Methods</span></div>
+            </div>
+            <div class="project-aside">
+              <span class="project-aside-label">Documents</span>
+              <button class="project-link" onclick="previewPDF('Tensile%20Testing%20of%20Rope%20Splices%20Report.pdf', 'Tensile Testing — Report')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                View report
+              </button>
+              <a href="Tensile%20Testing%20of%20Rope%20Splices%20Report.pdf" download class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download report
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <div class="project-header-left">
+            <span class="project-num">03</span>
+            <div class="project-title">Thermal Optimization of Electronic Components</div>
+            <div class="project-period">Sept 2024 — July 2025 · CPGE</div>
+            <div class="process-badges">
+              <span class="process-badge">Thermal Sim</span><span class="process-badge">Python</span><span class="process-badge">Heat Transfer</span><span class="process-badge">FEM</span><span class="process-badge">Data Analysis</span>
+            </div>
+          </div>
+          <button class="project-toggle-btn" aria-label="Toggle project">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
+          </button>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-details">
+              <ul>
+                <li>Simulated the thermal behavior of an LED mounted on a heatsink, modeling conduction, convection, and radiation simultaneously.</li>
+                <li>Developed Python scripts for data extraction, post-processing, and automated visualization of temperature fields.</li>
+                <li>Compared simulation outputs with analytical models to validate numerical accuracy.</li>
+                <li>Proposed geometry modifications to improve thermal dissipation and extend component lifetime.</li>
+              </ul>
+              <div class="project-tags"><span class="tag">Thermal Simulation</span><span class="tag">Python</span><span class="tag">Heat Transfer</span><span class="tag">Data Analysis</span></div>
+            </div>
+            <div class="project-aside">
+              <span class="project-aside-label">Documents</span>
+              <button class="project-link" onclick="previewPDF('Thermal%20Optimization%20of%20Electronic%20Components.pdf', 'Thermal Optimization — Report')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                View report
+              </button>
+              <a href="Thermal%20Optimization%20of%20Electronic%20Components.pdf" download class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download report
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <div class="project-header-left">
+            <span class="project-num">04</span>
+            <div class="project-title">Statistical Analysis of a Mechanical Slot Machine</div>
+            <div class="project-period">Sept 2023 — July 2024 · CPGE</div>
+            <div class="process-badges">
+              <span class="process-badge">Statistics</span><span class="process-badge">Python</span><span class="process-badge">Probability</span><span class="process-badge">Simulation</span>
+            </div>
+          </div>
+          <button class="project-toggle-btn" aria-label="Toggle project">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
+          </button>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-details">
+              <ul>
+                <li>Physically modified a mechanical wheel by adding a mass to study how imbalance affects outcome distribution.</li>
+                <li>Conducted repeated experiments and performed frequency analysis to assess deviation from equiprobability.</li>
+                <li>Built a Python simulation to estimate the resulting probability distribution and compare it with experimental measurements.</li>
+                <li>Demonstrated how a deterministic mechanical system can exhibit pseudo-random behavior under specific initial conditions.</li>
+              </ul>
+              <div class="project-tags"><span class="tag">Statistics</span><span class="tag">Python</span><span class="tag">Probability</span><span class="tag">Simulation</span><span class="tag">Experimental Design</span></div>
+            </div>
+            <div class="project-aside">
+              <span class="project-aside-label">Documents</span>
+              <button class="project-link" onclick="previewPDF('Statistical%20Analysis%20of%20a%20Mechanical%20Slot%20Machine.pdf', 'Slot Machine — Slides')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                View slides
+              </button>
+              <a href="Statistical%20Analysis%20of%20a%20Mechanical%20Slot%20Machine.pdf" download class="project-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download slides
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 5 -->
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <div class="project-header-left">
+            <span class="project-num">05</span>
+            <div class="project-title">Yes We Code — Academic Award Winner</div>
+            <div class="project-period">January — April 2021</div>
+            <div class="process-badges">
+              <span class="process-badge">SolidWorks</span><span class="process-badge">Python</span><span class="process-badge">Autonomous Systems</span><span class="process-badge">Award</span>
+            </div>
+          </div>
+          <button class="project-toggle-btn" aria-label="Toggle project">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round"><line x1="7" y1="1" x2="7" y2="13"/><line x1="1" y1="7" x2="13" y2="7"/></svg>
+          </button>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-details">
+              <ul>
+                <li>Designed and programmed autonomous vehicles in a team of four, following a technical specification document.</li>
+                <li>Used SolidWorks for 3D modeling of the vehicle chassis and Python for autonomous navigation logic.</li>
+                <li>Won an academic award for the quality and innovation of the final project delivery.</li>
+              </ul>
+              <div class="project-tags"><span class="tag">SolidWorks</span><span class="tag">Python</span><span class="tag">Autonomous Systems</span><span class="tag">Teamwork</span></div>
+            </div>
+            <div class="project-aside">
+              <span class="project-aside-label">Recognition</span>
+              <div style="display:flex; align-items:center; gap:10px; padding:14px; border:1px solid rgba(139,58,42,0.2); background:var(--accent-light);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b3a2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+                <span style="font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase;">Academic Award Winner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section">
+    <div class="section-label">Professional background</div>
+    <div class="section-title">Experience</div>
+    <div class="exp-grid">
+      <div class="exp-sidebar">Work History</div>
+      <div class="exp-items">
+
+        <div class="exp-item">
+          <div class="exp-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#8b3a2a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="4" width="16" height="22" rx="1.5"/>
+              <path d="M5 22h16"/>
+              <line x1="9" y1="9" x2="17" y2="9"/>
+              <line x1="9" y1="13" x2="17" y2="13"/>
+              <line x1="9" y1="17" x2="13" y2="17"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Private Tutor — Mathematics &amp; Physics</h3>
+            <div class="date">June 2022 — Present</div>
+            <p>Personalized one-on-one academic coaching for secondary and preparatory level students, adapting my pedagogy to each learner. Consistent track record of measurable grade improvement. Over two years of continued engagement — a testament to the trust students and families place in me.</p>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#8b3a2a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 20h20v3H6z"/>
+              <path d="M10 20c0-7 2-12 6-12s6 5 6 12"/>
+              <line x1="4" y1="20" x2="28" y2="20"/>
+            </svg>
+          </div>
+          <div>
+            <h3>General Contractor — Construction Site</h3>
+            <div class="date">July — August 2024</div>
+            <p>Supported on-site teams in preparation and logistics. Managed material handling, contributed to operational coordination, and developed a practical understanding of construction sequencing and site safety. First-hand exposure to engineering at the application layer.</p>
+          </div>
+        </div>
+
+
+
+        
+        <div class="exp-item">
+  <div class="exp-icon">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#8b3a2a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      
+      <!-- Manche -->
+      <line x1="16" y1="4" x2="16" y2="28"/>
+
+      <!-- Dents -->
+      <line x1="13" y1="4" x2="13" y2="12"/>
+      <line x1="16" y1="4" x2="16" y2="12"/>
+      <line x1="19" y1="4" x2="19" y2="12"/>
+
+    </svg>
+  </div>
+  <div>
+    <h3>Restaurant Staff</h3>
+    <div class="date">July — August 2023</div>
+    <p>
+      Took orders and served customers in a fast-paced environment. 
+      Coordinated with kitchen staff and managed multiple tables simultaneously.
+    </p>
+  </div>
+</div>
+
+
+
+
+
+
+        
+        <div class="exp-item">
+          <div class="exp-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#8b3a2a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 8h18l-2 16H9L7 8z"/>
+              <path d="M12 8a4 4 0 0 1 8 0"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Sales Assistant</h3>
+            <div class="date">March 2019</div>
+            <p>Welcomed and advised customers, managed sales and cash register operations, handled product stocking and visual merchandising. An early professional experience that built client-facing communication skills.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section">
+    <div class="section-label">Technical proficiency</div>
+    <div class="section-title">Skills &amp; <em>Interests</em></div>
+    <div class="skills-layout">
+      <div class="skill-group">
+        <div class="skill-group-label">Engineering Tools</div>
+        <div class="skill-pills">
+          <div class="pill">SolidWorks</div>
+          <div class="pill">FreeCAD</div>
+          <div class="pill">CAD / CAM</div>
+          <div class="pill">FEM (structural)</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Programming</div>
+        <div class="skill-pills">
+          <div class="pill">Python</div>
+          <div class="pill">MATLAB</div>
+          <div class="pill">Scilab</div>
+          <div class="pill">SQL</div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-pills">
+          <div class="pill">French — Native</div>
+          <div class="pill">English — B2</div>
+          <div class="pill">Spanish — A2</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="interests-label">Personal Interests</div>
+      <div class="interests-row">
+
+
+        
+        <div class="interest-badge">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Tête de raquette -->
+    <ellipse cx="10" cy="8" rx="4" ry="5"/>
+    
+    <!-- Manche -->
+    <line x1="12.5" y1="12" x2="18" y2="20"/>
+    
+  </svg>
+  Badminton
+</div>
+
+
+        
+        <div class="interest-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+          Basketball
+        </div>
+        <div class="interest-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3m-4 7h9a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2z"/></svg>
+          Driving &amp; Road Exploration
+        </div>
+        <div class="interest-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Reading — Science &amp; Philosophy
+        </div>
+        <div class="interest-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Cooking &amp; Culinary Creativity
+        </div>
+        <div class="interest-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Discovering Other Cultures
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH INTERESTS -->
+<section id="research">
+  <div class="section">
+    <div class="section-label">Academic ambitions</div>
+    <div class="section-title">Research <em>Interests</em></div>
+    <p style="font-size:15px; color:var(--ink2); font-weight:300; line-height:1.9; max-width:640px; margin-bottom:64px;">My engineering formation has led me toward three interconnected areas where I intend to contribute at the graduate level — combining physical modeling, computational tools, and hands-on experimental validation.</p>
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b3a2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" opacity="0.25"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h4>Thermal &amp; Fluid Systems</h4>
+        <p>Heat transfer optimization, thermal management of electronics and energy systems, computational fluid dynamics. My thermal LED project sparked a deep interest in bridging simulation and physical validation.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b3a2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <h4>Computational Mechanics</h4>
+        <p>Finite element methods, structural analysis, and simulation-driven design. I am particularly drawn to how numerical methods can compress the physical prototyping loop in complex mechanical systems.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b3a2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h4>Data-Driven Engineering</h4>
+        <p>Statistical modeling, experimental measurement, and Python-based data pipelines applied to physical systems. My probability and tensile testing projects both demonstrated the power of rigorous quantitative analysis in generating insight from real experimental data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section id="whyme">
+  <div class="whyme-inner">
+    <div class="whyme-sup">For admissions committees</div>
+    <div class="whyme-title">What sets me<br><em>apart.</em></div>
+    <div class="whyme-grid">
+      <div class="whyme-card">
+        <div class="whyme-card-num">01 — Formation</div>
+        <h4>CPGE-trained rigour</h4>
+        <p>France's CPGE are among the most intensive undergraduate programs in the world — two years of full-time advanced mathematics, physics, and engineering sciences at a pace that has no equivalent in most systems. This is not just a credential; it is a way of thinking: systematic, precise, and built for hard problems.</p>
+      </div>
+      <div class="whyme-card">
+        <div class="whyme-card-num">02 — Approach</div>
+        <h4>Theory meets the workshop</h4>
+        <p>I model in SolidWorks, simulate in Python — but I also machine parts, run tensile tests, and read precision instruments. I understand engineering at both the equation and the lathe level. That duality makes me effective in research environments that bridge simulation and physical experiment, which is where the most interesting problems live.</p>
+      </div>
+      <div class="whyme-card">
+        <div class="whyme-card-num">03 — Communication</div>
+        <h4>Engineering educator</h4>
+        <p>Two years of teaching mathematics and physics to individual students has sharpened my ability to explain difficult concepts clearly, adapt to my audience, and build knowledge incrementally.</p>
+      </div>
+      <div class="whyme-card">
+        <div class="whyme-card-num">04 — Character</div>
+        <h4>Grounded, driven, curious</h4>
+        <p>I have worked construction sites and restaurant floors alongside rigorous academic training. I know how to show up, commit, and contribute in environments that demand both intellectual precision and practical adaptability. My work ethic was built by real-world stakes and that makes a difference in research settings that are sometimes unpredictable and always demanding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-sup">Get in touch</div>
+    <div class="contact-title">Let's start a<br><em>conversation.</em></div>
+    <div class="contact-links">
+      <a href="mailto:omar.abdul@ensam.eu" class="contact-link email">omar.abdul@ensam.eu</a>
+      <a href="https://linkedin.com/in/omarabdul94" class="contact-link linkedin" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Omar Abdul — Engineering Portfolio · ENSAM</footer>
+
+<!-- PDF PREVIEW MODAL -->
+<div class="pdf-modal-overlay" id="pdfModalOverlay" onclick="closePDFModal(event)">
+  <div class="pdf-modal" id="pdfModal">
+    <div class="pdf-modal-header">
+      <span class="pdf-modal-title" id="pdfModalTitle">Document</span>
+      <div class="pdf-modal-actions">
+        <a href="#" download id="pdfModalDl" class="pdf-modal-dl">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download
+        </a>
+        <button class="pdf-modal-close" onclick="closePDFModal(null)" aria-label="Close">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="pdf-modal-body">
+      <div class="pdf-loading" id="pdfLoading">
+        <div class="pdf-spinner"></div>
+        <span class="pdf-loading-text">Loading document…</span>
+      </div>
+      <iframe id="pdfIframe" title="PDF Preview" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <script>
+function previewPDF(encodedFilename, label) {
+  const overlay = document.getElementById('pdfModalOverlay');
+  const iframe = document.getElementById('pdfIframe');
+  const title = document.getElementById('pdfModalTitle');
+  const dl = document.getElementById('pdfModalDl');
+  const loading = document.getElementById('pdfLoading');
+  const decodedName = decodeURIComponent(encodedFilename);
+  title.textContent = label || decodedName;
+  dl.href = encodedFilename;
+  dl.download = decodedName;
+  iframe.src = '';
+  loading.classList.remove('hidden');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    iframe.src = encodedFilename;
+    iframe.onload = () => loading.classList.add('hidden');
+    setTimeout(() => loading.classList.add('hidden'), 5000);
+  }, 120);
+}
+
+function closePDFModal(event) {
+  if (event && event.target !== document.getElementById('pdfModalOverlay')) return;
+  const overlay = document.getElementById('pdfModalOverlay');
+  const iframe = document.getElementById('pdfIframe');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(() => { iframe.src = ''; }, 350);
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePDFModal(null); });
+
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.style.width = '48px'; ring.style.height = '48px'; ring.style.opacity = '0.8'; });
+  el.addEventListener('mouseleave', () => { ring.style.width = '32px'; ring.style.height = '32px'; ring.style.opacity = '0.5'; });
+});
+
+const bar = document.getElementById('progress-bar');
 window.addEventListener('scroll', () => {
-  const bar = document.getElementById('progress-bar');
   const scrolled = window.scrollY;
   const total = document.documentElement.scrollHeight - window.innerHeight;
   bar.style.width = (scrolled / total * 100) + '%';
@@ -659,16 +1348,9 @@ const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('nav ul a:not(.nav-cv-btn)');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(s => {
-    const top = s.offsetTop - 120;
-    if (pageYOffset >= top) current = s.getAttribute('id');
-  });
-  navLinks.forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href').includes(current)) a.classList.add('active');
-  });
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--ink)' : ''; });
 });
 </script>
-
 </body>
 </html>
